@@ -1,0 +1,474 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JCEM GROUPE TOGO — Béton Prêt à l'Emploi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <meta name="csrf-token" content="{{ csrf_token }}" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=3" />
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo nav-logo-link" onclick="showPage('home', null)" role="button" tabindex="0">
+      <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
+    </div>
+    <div class="nav-links">
+      <a class="active" data-page="home" onclick="showPage('home', this)">Accueil</a>
+      <a onclick="showPage('produits', this)">Produits</a>
+      <a onclick="showPage('detail', this)">Fiche produit</a>
+      <a onclick="showPage('panier', this)">Panier</a>
+      <a onclick="goToCheckout(this)">Commander</a>
+      <a href="{% url 'client:bon_plan' %}">Bons Plans</a>
+    </div>
+    <div class="nav-actions">
+      <span>+228 90 30 55 88</span>
+      <button class="btn btn-secondary" onclick="showPage('panier', null)">🛒 Panier (<span class="cart-count">0</span>)</button>
+      <button class="btn btn-primary" onclick="goToCheckout()">Commander</button>
+    </div>
+  </div>
+</nav>
+
+<div id="page-home" class="page active">
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span></span> Lomé, Togo · Livraison chantier</div>
+        <h1 class="poppins">Béton prêt à l'emploi,<br /><em>livré sur votre chantier</em></h1>
+        <p class="hero-desc">Commandez en ligne, suivez votre production en temps réel et recevez une preuve de livraison photo. Simple, fiable, certifié NF EN 206.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="showPage('produits', null)">Voir les produits</button>
+          <button class="btn btn-outline-red" onclick="document.getElementById('calc-anc').scrollIntoView({behavior:'smooth'})">Calculer mon volume</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-val">500+</div><div class="hero-stat-label">Chantiers livrés</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">24h</div><div class="hero-stat-label">Délai production</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-label">Traçabilité POD</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">4</div><div class="hero-stat-label">Paiements acceptés</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-img">
+          <img src="{% static 'client/images/hero-concrete-mixer.jpg' %}" alt="Camion malaxeur à béton sur chantier" style="width:100%;height:100%;object-fit:cover;">
+          <div class="hero-float">
+            <div class="dot-green"></div>
+            <div>
+              <div class="hero-float-title">Livraison en cours</div>
+              <div class="hero-float-sub">Camion BPE-01 · Avédji</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="process-bar">
+    <div class="process-bar-inner reveal-stagger">
+      <div class="step"><div class="step-num s-active">1</div><div><div class="step-text">Commander en ligne</div><div class="step-sub">Choix produit + volume</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-done">2</div><div><div class="step-text">Production certifiée</div><div class="step-sub">24h · Centrale béton</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-done">3</div><div><div class="step-text">Livraison chantier</div><div class="step-sub">Créneau choisi · GPS</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-idle">4</div><div><div class="step-text">Preuve POD</div><div class="step-sub">Photo + signature + facture</div></div></div>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="sec-in">
+      <div class="section-header reveal">
+        <div>
+          <div class="sec-eye">Notre gamme</div>
+          <h2 class="sec-title">Bétons prêts à l'emploi</h2>
+        </div>
+        <button class="btn btn-outline-red" onclick="showPage('produits', null)">Voir tout →</button>
+      </div>
+      <div class="products-grid reveal-stagger">
+        <div class="pcard">
+          <div class="pcard-img">
+            <img src="{% static 'client/images/concrete-c20-25.jpg' %}" alt="Béton C20/25 en cours de coulage" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C20/25</div>
+            <div class="pcard-desc">Chapes, trottoirs et ouvrages à faible charge. Résistance 20 MPa.</div>
+            <div class="pcard-tags"><span class="ptag">Chape</span><span class="ptag">Trottoir</span><span class="ptag">Faible charge</span></div>
+            <div class="pcard-footer"><div class="pcard-price">65 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="addToCart('c20-25', 1); showPage('panier', null);">Commander</button></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img">
+            <img src="{% static 'client/images/concrete-c25-30.jpg' %}" alt="Béton C25/30 avec ferraillage pour fondations" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C25/30</div>
+            <div class="pcard-desc">Fondations superficielles, dallages structurels, voiles de sous-sol.</div>
+            <div class="pcard-tags"><span class="ptag">Fondation</span><span class="ptag">Dallage</span><span class="ptag">Voile</span></div>
+            <div class="pcard-footer"><div class="pcard-price">75 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="addToCart('c25-30', 1); showPage('panier', null);">Commander</button></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img">
+            <div class="pcard-badge">POPULAIRE</div>
+            <img src="{% static 'client/images/concrete-c30-37.jpg' %}" alt="Piliers en béton C30/37, structure porteuse" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C30/37</div>
+            <div class="pcard-desc">Poteaux, poutres, dalles de plancher, structures porteuses. 30 MPa.</div>
+            <div class="pcard-tags"><span class="ptag">Poteau</span><span class="ptag">Poutre</span><span class="ptag">Dalle</span><span class="ptag">Structure</span></div>
+            <div class="pcard-footer"><div class="pcard-price">85 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="showPage('detail', null)">Voir →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="calc-anc" class="calc-section">
+    <div class="calc-inner reveal-stagger">
+      <div class="calc-left">
+        <h2>Calculez votre volume exact</h2>
+        <p>Entrez les dimensions de l'ouvrage pour obtenir le volume et une estimation instantanée du coût en FCFA.</p>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Calcul L × l × H automatique</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Sélection du béton adapté</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Estimation de prix instantanée</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Commander directement depuis le calculateur</span></div>
+        <div class="calc-illustration">
+          <img src="{% static 'client/images/calc-illustration.jpg' %}" alt="Plan et calcul de volume d'un ouvrage" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <div class="calc-form">
+        <h3>Calculateur de volume</h3>
+        <div class="calc-row">
+          <div class="cfield"><label>Longueur (m)</label><input type="number" id="c-l" value="5" min="0" step="0.1" oninput="calcVol()" /></div>
+          <div class="cfield"><label>Largeur (m)</label><input type="number" id="c-w" value="4" min="0" step="0.1" oninput="calcVol()" /></div>
+          <div class="cfield"><label>Hauteur (m)</label><input type="number" id="c-h" value="0.20" min="0" step="0.05" oninput="calcVol()" /></div>
+        </div>
+        <div class="cfield"><label>Type de béton</label><select id="c-type" onchange="calcVol()">
+            <option value="c20-25">C20/25 — 65 000 FCFA/m³</option>
+            <option value="c25-30">C25/30 — 75 000 FCFA/m³</option>
+            <option value="c30-37" selected>C30/37 — 85 000 FCFA/m³</option>
+            <option value="c35-45">C35/45 — 98 000 FCFA/m³</option>
+          </select>
+        </div>
+        <div class="calc-result">
+          <div><div class="calc-result-label">Volume calculé</div><div class="calc-vol" id="c-vol">4,00 m³</div></div>
+          <div class="calc-price-summary"><div class="calc-price-val" id="c-price">340 000 FCFA</div><div class="calc-price-lbl">Estimation HT</div></div>
+        </div>
+        <button class="btn btn-primary w-full" onclick="orderFromCalc()">Commander ce volume →</button>
+        <p class="calc-note">Volume minimum : 0,5 m³ · Livraison incluse &gt; 2 m³</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="sec-in">
+      <div class="section-center-text reveal">
+        <div class="sec-eye">Flexibilité</div>
+        <h2 class="sec-title">Moyens de paiement acceptés</h2>
+        <p class="sec-sub">Payez comme vous préférez — mobile money, carte bancaire ou espèces</p>
+      </div>
+      <div class="pay-grid reveal-stagger">
+        <div class="pay-card">
+          <div class="pay-icon pay-icon-img"><img src="{% static 'client/images/pay-mixx.png' %}" alt="Mixx by Yas"></div>
+          <div class="pay-name">Mixx by Yas</div>
+          <div class="pay-sub">Yas Togo Mobile Money</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-icon pay-icon-img"><img src="{% static 'client/images/pay-flooz.png' %}" alt="Flooz"></div>
+          <div class="pay-name">Flooz</div>
+          <div class="pay-sub">Moov Africa Mobile Money</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-icon pay-icon-img pay-icon-cards"><img src="{% static 'client/images/pay-visa.png' %}" alt="Visa"><img src="{% static 'client/images/pay-mastercard.png' %}" alt="Mastercard"></div>
+          <div class="pay-name">Carte bancaire</div>
+          <div class="pay-sub">Visa, Mastercard</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-icon pay-icon-gray"><span>💵</span></div>
+          <div class="pay-name">Espèces (COD)</div>
+          <div class="pay-sub">Paiement à la livraison</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+<div id="page-produits" class="page">
+  <div class="page-tabs"><div class="page-tabs-inner">
+    <div class="ptab active" onclick="filterProd('all', this)">Tous les produits</div>
+    <div class="ptab" onclick="filterProd('bpe', this)">Béton BPE</div>
+    <div class="ptab" onclick="filterProd('mortier', this)">Mortiers</div>
+    <div class="ptab" onclick="filterProd('agregat', this)">Agrégats</div>
+  </div></div>
+  <div class="sec-in page-section">
+    <div class="section-header page-title">
+      <div>
+        <div class="sec-eye">Catalogue complet</div>
+        <h1 class="sec-title poppins">Nos produits</h1>
+        <p class="sec-sub">Bétons, mortiers et agrégats — livrés à Lomé et environs</p>
+      </div>
+    </div>
+    <div class="products-grid reveal-stagger" id="prod-grid">
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><img src="{% static 'client/images/concrete-c20-25.jpg' %}" alt="Béton C20/25 en cours de coulage" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C20/25</div><div class="pcard-desc">Pour chapes, trottoirs et ouvrages soumis à faible charge. 20 MPa.</div><div class="pcard-tags"><span class="ptag">Chape</span><span class="ptag">Trottoir</span><span class="ptag">Faible charge</span></div><div class="pcard-footer"><div class="pcard-price">65 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="addToCart('c20-25', 1); showPage('panier', null);">Commander</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><img src="{% static 'client/images/concrete-c25-30.jpg' %}" alt="Béton C25/30 avec ferraillage pour fondations" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C25/30</div><div class="pcard-desc">Fondations superficielles, dallages, voiles de sous-sol. 25 MPa.</div><div class="pcard-tags"><span class="ptag">Fondation</span><span class="ptag">Dallage</span><span class="ptag">Voile</span></div><div class="pcard-footer"><div class="pcard-price">75 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="addToCart('c25-30', 1); showPage('panier', null);">Commander</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><div class="pcard-badge">POPULAIRE</div><img src="{% static 'client/images/concrete-c30-37.jpg' %}" alt="Piliers en béton C30/37, structure porteuse" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C30/37</div><div class="pcard-desc">Poteaux, poutres, dalles de plancher, structures porteuses. 30 MPa.</div><div class="pcard-tags"><span class="ptag">Poteau</span><span class="ptag">Poutre</span><span class="ptag">Dalle</span><span class="ptag">Structure</span></div><div class="pcard-footer"><div class="pcard-price">85 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="showPage('detail', null)">Détails →</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><img src="{% static 'client/images/concrete-c35-45.jpg' %}" alt="Ouvrage d'art en béton C35/45" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C35/45</div><div class="pcard-desc">Ouvrages d'art, ponts, structures à fortes contraintes. 35 MPa.</div><div class="pcard-tags"><span class="ptag">Ouvrage d'art</span><span class="ptag">Pont</span><span class="ptag">Haute résistance</span></div><div class="pcard-footer"><div class="pcard-price">98 000 <span>FCFA/m³</span></div><button class="btn btn-primary btn-small" onclick="addToCart('c35-45', 1); showPage('panier', null);">Commander</button></div></div>
+      </div>
+      <div class="pcard" data-cat="mortier">
+        <div class="pcard-img"><img src="{% static 'client/images/mortier-m10.jpg' %}" alt="Pose de briques au mortier de maçonnerie" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Mortier de maçonnerie M10</div><div class="pcard-desc">Montage de blocs, briques et enduits de façade. Sac 25 kg ou vrac.</div><div class="pcard-tags"><span class="ptag">Maçonnerie</span><span class="ptag">Enduit</span><span class="ptag">Sac 25kg</span></div><div class="pcard-footer"><div class="pcard-price">4 200 <span>FCFA/sac</span></div><button class="btn btn-primary btn-small" onclick="addToCart('mortier-m10', 1); showPage('panier', null);">Commander</button></div></div>
+      </div>
+      <div class="pcard" data-cat="agregat">
+        <div class="pcard-img"><img src="{% static 'client/images/gravillon-5-15.jpg' %}" alt="Tas de gravillons concassés 5/15" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="pcard-body"><div class="pcard-title">Gravillon concassé 5/15</div><div class="pcard-desc">Agrégat calibré pour béton, drainage et travaux routiers. Par tonne.</div><div class="pcard-tags"><span class="ptag">Béton</span><span class="ptag">Drainage</span><span class="ptag">Voirie</span></div><div class="pcard-footer"><div class="pcard-price">28 000 <span>FCFA/t</span></div><button class="btn btn-primary btn-small" onclick="addToCart('gravillon-5-15', 1); showPage('panier', null);">Commander</button></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-detail" class="page">
+  <div class="breadcrumb-nav">Accueil / Produits / <span>Béton C30/37</span></div>
+  <div class="prod-detail reveal-stagger">
+    <div>
+      <div class="prod-main-img">
+        <img src="{% static 'client/images/concrete-c30-37.jpg' %}" alt="Béton C30/37 — Prêt à l'Emploi" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="prod-thumbs">
+        <div class="prod-thumb active">C30</div>
+        <div class="prod-thumb">Camion</div>
+        <div class="prod-thumb">Chantier</div>
+        <div class="prod-thumb">TDS PDF</div>
+      </div>
+    </div>
+    <div>
+      <div class="product-band">Produits / Bétons BPE / <span>Béton C30/37</span></div>
+      <h1 class="product-title poppins">Béton C30/37 — Prêt à l'Emploi</h1>
+      <div class="product-meta">
+        <span class="product-rating">★★★★★</span>
+        <span class="product-review-count">4.9 · 128 chantiers</span>
+        <span class="sbadge s-route">En stock</span>
+      </div>
+      <div class="spec-grid">
+        <div class="spec-item"><div class="spec-lbl">Résistance</div><div class="spec-val">30 MPa</div></div>
+        <div class="spec-item"><div class="spec-lbl">Classe XC</div><div class="spec-val">XC2 / XC3</div></div>
+        <div class="spec-item"><div class="spec-lbl">Affaissement</div><div class="spec-val">S3 (100–150mm)</div></div>
+        <div class="spec-item"><div class="spec-lbl">Min commande</div><div class="spec-val">0,5 m³</div></div>
+        <div class="spec-item"><div class="spec-lbl">Délai livraison</div><div class="spec-val">24–48h</div></div>
+        <div class="spec-item"><div class="spec-lbl">Dmax granulat</div><div class="spec-val">20 mm</div></div>
+      </div>
+      <div class="detail-price-row">
+        <div class="pcard-price" style="font-size:22px;">85 000 <span style="font-size:13px;">FCFA / m³</span></div>
+        <div class="detail-price-note">Livraison incluse à Lomé pour ≥ 2 m³ · HT</div>
+      </div>
+      <div class="detail-action-row">
+        <div class="qty-step">
+          <button onclick="chgQty(-0.5)">−</button>
+          <input type="number" id="det-qty" value="4" min="0.5" step="0.5" oninput="updDetTotal()" />
+          <span>m³</span>
+        </div>
+        <span class="detail-total" id="det-total">340 000 FCFA</span>
+      </div>
+      <div class="detail-buttons">
+        <button class="btn btn-primary" onclick="orderFromDetail()">Commander maintenant</button>
+        <button class="btn btn-secondary" onclick="addToCartFromDetail()">+ Panier</button>
+      </div>
+      <div class="product-tds-card">
+        <div class="product-tds-text">Fiche technique (TDS) disponible en PDF</div>
+        <a href="#" class="product-tds-link">Télécharger →</a>
+      </div>
+    </div>
+  </div>
+  <div class="tabs-nav">
+    <div class="tab active" onclick="switchTab(this, 'desc')">Description</div>
+    <div class="tab" onclick="switchTab(this, 'tds')">Fiche technique</div>
+    <div class="tab" onclick="switchTab(this, 'livr')">Livraison</div>
+    <div class="tab" onclick="switchTab(this, 'avis')">Avis (128)</div>
+  </div>
+  <div class="tabs-content">
+    <div class="tab-panel active" id="tab-desc">
+      <h3 class="poppins">Description du produit</h3>
+      <p>Le béton C30/37 est un béton structurel formulé selon la norme NF EN 206, garantissant une résistance à la compression de 30 MPa à 28 jours. Sa classe de consistance S3 permet une mise en place aisée dans tous types de coffrages.</p>
+      <h3 class="poppins">Applications principales</h3>
+      <div class="desc-grid">
+        <div class="desc-item"><span>✓</span> Poteaux et poutres</div>
+        <div class="desc-item"><span>✓</span> Dalles de plancher</div>
+        <div class="desc-item"><span>✓</span> Escaliers et rampes</div>
+        <div class="desc-item"><span>✓</span> Structures industrielles</div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-tds">
+      <div class="tds-grid">
+        <div>
+          <h3 class="poppins">Caractéristiques techniques</h3>
+          <table class="tds-table">
+            <tr><td>Résistance compression (28j)</td><td>≥ 30 MPa</td></tr>
+            <tr><td>Classe d'exposition</td><td>XC2 / XC3</td></tr>
+            <tr><td>Consistance</td><td>S3 (100–150 mm)</td></tr>
+            <tr><td>Dmax granulat</td><td>20 mm</td></tr>
+            <tr><td>Rapport E/C max</td><td>0,50</td></tr>
+          </table>
+        </div>
+        <div class="tds-card">
+          <div class="tds-card-icon">PDF</div>
+          <div class="tds-card-title">TDS — C30/37</div>
+          <div class="tds-card-sub">PDF · A4 · 420 Ko</div>
+          <a href="#" class="btn btn-outline-red btn-block">Télécharger la fiche</a>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-livr">
+      <div class="livr-grid">
+        <div class="livr-card"><div class="livr-card-title">Zone de livraison</div><div>Lomé et périphérie (30 km). Au-delà : nous consulter pour tarif kilométrique.</div></div>
+        <div class="livr-card"><div class="livr-card-title">Délai</div><div>Commande avant 14h → livraison le lendemain matin. Créneau choisi lors de la commande.</div></div>
+        <div class="livr-card"><div class="livr-card-title">Frais de livraison</div><div>Inclus à Lomé pour toute commande ≥ 2 m³. Forfait 15 000 FCFA en dessous.</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-avis">
+      <div class="reviews-list">
+        <div class="review-card"><div class="review-header"><span>Koffi A.</span><span class="review-stars">★★★★★</span></div><p>Béton de très bonne qualité, livré à l'heure. Le chauffeur a pris la photo à la livraison, tout est bien documenté.</p></div>
+        <div class="review-card"><div class="review-header"><span>Mme Adjoa T.</span><span class="review-stars">★★★★★</span></div><p>Service rapide et professionnel. La commande en ligne est simple, le béton correspond parfaitement à nos spécifications.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-panier" class="page">
+  <div class="breadcrumb-nav">Accueil / <span>Panier</span></div>
+  <div class="cart-layout reveal-stagger">
+    <div>
+      <div class="card-box">
+        <div class="card-box-hdr"><h2>Mon panier</h2><span id="panier-count">0 article</span></div>
+        <div id="cart-items-container"></div>
+        <div id="cart-empty-state" class="cart-empty" style="display:none;">
+          <p>Votre panier est vide.</p>
+          <button class="btn btn-primary" onclick="showPage('produits', null)">Voir les produits →</button>
+        </div>
+      </div>
+      <div class="card-box">
+        <div class="card-box-hdr"><h3>Adresse de livraison</h3></div>
+        <div class="card-box-body">
+          <div class="form-row"><div class="fld"><label>Nom / Entreprise</label><input type="text" placeholder="Ex: Chantier Adjoa Koffi" /></div><div class="fld"><label>Téléphone</label><input type="tel" placeholder="+228 90 00 00 00" /></div></div>
+          <div class="fld"><label>Adresse du chantier</label><input type="text" placeholder="Quartier, rue, point de repère — Lomé" /></div>
+          <div class="fld"><label>Instructions livraison</label><input type="text" placeholder="Ex: Appeler 30 min avant, accès par le portail nord" /></div>
+        </div>
+      </div>
+      <div class="card-box">
+        <div class="card-box-hdr"><h3>Créneau de livraison</h3><span>Jeudi 19 juin 2025</span></div>
+        <div class="card-box-body">
+          <div class="slot-grid">
+            <div class="slot selected">7h00 – 9h00</div>
+            <div class="slot">9h00 – 11h00</div>
+            <div class="slot">11h00 – 13h00</div>
+            <div class="slot full">13h–15h — Complet</div>
+            <div class="slot">15h00 – 17h00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-box">
+      <h3>Récapitulatif</h3>
+      <div id="panier-summary-lines"></div>
+      <div class="sum-line subtotal"><span>Sous-total</span><span id="subtot">0</span></div>
+      <div class="sum-line"><span>Livraison</span><span class="text-success">Incluse</span></div>
+      <div class="sum-total"><span>Total HT</span><span id="tot-ht">0 FCFA</span></div>
+      <button class="btn btn-primary w-full" onclick="goToCheckout()">Passer la commande →</button>
+      <p class="cart-note">T-Money · Flooz · Virement · Espèces</p>
+    </div>
+  </div>
+</div>
+
+<div id="page-checkout" class="page">
+  <div class="breadcrumb-nav">Accueil / Panier / <span>Finaliser la commande</span></div>
+  <div class="checkout-layout reveal-stagger">
+    <div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">1</div><h3>Vos coordonnées</h3></div>
+        <div class="cblock-body">
+          <div class="form-row"><div class="fld"><label>Prénom</label><input id="order-first-name" type="text" placeholder="Jean-Claude" /></div><div class="fld"><label>Nom</label><input id="order-last-name" type="text" placeholder="Mensah" /></div></div>
+          <div class="form-row"><div class="fld"><label>Téléphone</label><input id="order-phone" type="tel" placeholder="+228 90 00 00 00" /></div><div class="fld"><label>Email</label><input id="order-email" type="email" placeholder="jean@example.com" /></div></div>
+          <div class="fld"><label>Entreprise (optionnel)</label><input id="order-company" type="text" placeholder="Nom de l'entreprise ou du chantier" /></div>
+        </div>
+      </div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">2</div><h3>Adresse et créneau de livraison</h3></div>
+        <div class="cblock-body">
+          <div class="fld"><label>Adresse du chantier</label><input id="order-address" type="text" placeholder="Quartier, rue, repère — Lomé" /></div>
+          <div class="fld"><label>Instructions particulières</label><textarea id="order-instructions" placeholder="Accès, contact sur place, commentaires..."></textarea></div>
+          <div class="form-label">Créneau souhaité — Jeudi 19 juin</div>
+          <div class="slot-grid" id="order-slot-grid">
+            <div class="slot selected" data-slot="7h00 – 9h00">7h00 – 9h00</div>
+            <div class="slot" data-slot="9h00 – 11h00">9h00 – 11h00</div>
+            <div class="slot" data-slot="11h00 – 13h00">11h00 – 13h00</div>
+            <div class="slot full" data-slot="13h–15h — Complet">13h–15h — Complet</div>
+            <div class="slot" data-slot="15h00 – 17h00">15h00 – 17h00</div>
+          </div>
+        </div>
+      </div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">3</div><h3>Mode de paiement</h3></div>
+        <div class="cblock-body">
+          <div class="pay-opts">
+            <div class="pay-opt selected" onclick="selPay(this)" data-method="tmoney" data-label="Mixx by Yas" data-note="Vous recevrez une notification USSD sur votre téléphone pour confirmer le paiement.">
+              <div class="pay-opt-icon pay-opt-icon-img"><img src="{% static 'client/images/pay-mixx.png' %}" alt="Mixx by Yas"></div>
+              <div class="pay-opt-lbl">Mixx by Yas</div>
+            </div>
+            <div class="pay-opt" onclick="selPay(this)" data-method="flooz" data-label="Flooz" data-note="Vous recevrez une notification USSD Moov Money pour confirmer le paiement.">
+              <div class="pay-opt-icon pay-opt-icon-img"><img src="{% static 'client/images/pay-flooz.png' %}" alt="Flooz"></div>
+              <div class="pay-opt-lbl">Flooz</div>
+            </div>
+            <div class="pay-opt" onclick="selPay(this)" data-method="card" data-label="Carte bancaire" data-note="Vous serez redirigé vers une page de paiement sécurisée pour saisir votre carte.">
+              <div class="pay-opt-icon pay-opt-icon-img pay-opt-icon-cards"><img src="{% static 'client/images/pay-visa.png' %}" alt="Visa"><img src="{% static 'client/images/pay-mastercard.png' %}" alt="Mastercard"></div>
+              <div class="pay-opt-lbl">Carte bancaire</div>
+            </div>
+            <div class="pay-opt" onclick="selPay(this)" data-method="cash" data-label="Espèces" data-note="Réglez en espèces directement auprès du chauffeur à la livraison.">
+              <div class="pay-opt-icon">💵</div>
+              <div class="pay-opt-lbl">Espèces</div>
+            </div>
+          </div>
+          <div class="pay-note"><strong id="pay-note-label">Mixx by Yas</strong> — <span id="pay-note-text">Vous recevrez une notification USSD sur votre téléphone pour confirmer le paiement.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-box" id="order-summary-box">
+      <h3>Votre commande</h3>
+      <div id="checkout-summary-lines"></div>
+      <div class="sum-line subtotal"><span>Sous-total</span><span id="summary-subtotal">0</span></div>
+      <div class="sum-line"><span>Livraison</span><span class="text-success">Incluse</span></div>
+      <div class="sum-total"><span>Total HT</span><span id="summary-total">0 FCFA</span></div>
+      <div class="checkout-note">Livraison programmée — Jeu. 19 juin · 7h00 – 9h00</div>
+      <button class="btn btn-primary w-full" onclick="submitOrder(event)">Confirmer la commande →</button>
+      <p class="cart-note">Notification SMS + WhatsApp + Email</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-main">
+      <div>
+        <div class="footer-logo-box">
+          <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="footer-logo-img">
+        </div>
+        <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
+      </div>
+      <div class="footer-col"><h4>Produits</h4><a href="#" onclick="showPage('home', null)">Béton C20/25</a><a href="#" onclick="showPage('home', null)">Béton C25/30</a><a href="#" onclick="showPage('home', null)">Béton C30/37</a><a href="#" onclick="showPage('home', null)">Béton C35/45</a><a href="#" onclick="showPage('home', null)">Mortier prêt</a></div>
+      <div class="footer-col"><h4>Services</h4><a href="#" onclick="showPage('home', null)">Livraison chantier</a><a href="#" onclick="showPage('home', null)">Calcul de volume</a><a href="#" onclick="showPage('home', null)">Fiches techniques</a><a href="#" onclick="showPage('home', null)">Suivi commande</a></div>
+      <div class="footer-col"><h4>Contact</h4><p>+228 90 00 00 00</p><p>contact@jcemgroupe.tg</p><p>Lomé, Togo</p><p>Lun–Sam : 7h – 18h</p><div class="footer-payment-badges"><span class="footer-pay-badge">Mixx by Yas</span><span class="footer-pay-badge">Flooz</span><span class="footer-pay-badge">Carte bancaire</span></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p><p>Béton prêt à l'emploi · Lomé · Togo</p></div>
+  </footer>
+  <script src="{% static 'client/js/main.js' %}?v=3"></script>
+</body>
+</html>

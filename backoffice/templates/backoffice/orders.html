@@ -1,0 +1,49 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Commandes — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Commandes</h1>
+    <div class="topbar-actions">
+      <span class="topbar-date">{% now "D d M Y" %}</span>
+      <a class="btn btn-primary" href="{% url 'backoffice:new_order' %}">+ Nouvelle commande</a>
+    </div>
+  </div>
+  <div class="admin-content">
+    <div class="page-header-card">
+      <div>
+        <h2>Gestion des commandes</h2>
+        <p>Affiche les commandes récentes, les statuts en cours et permet de créer rapidement une nouvelle commande.</p>
+      </div>
+      <div class="status-summary">
+        <div class="status-pill">Total: {{ stats.total }}</div>
+        <div class="status-pill">En attente: {{ stats.pending }}</div>
+        <div class="status-pill">En livraison: {{ stats.delivering }}</div>
+        <div class="status-pill">Livrées: {{ stats.delivered }}</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card-hdr"><div class="admin-card-title">Commandes récentes</div></div>
+      <div class="atable-wrap">
+      <table class="atable">
+        <thead><tr><th>#</th><th>Client</th><th>Total</th><th>Livraison</th><th>Paiement</th><th>Statut</th><th>Action</th></tr></thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.order_reference }}</td>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+            <td>{{ order.total_amount|intcomma }} FCFA</td>
+            <td>{{ order.delivery_slot }}</td>
+            <td>{{ order.get_payment_method_display }}</td>
+            <td><span class="sbadge {% if order.status == 'delivered' %}s-livre{% elif order.status == 'delivering' %}s-route{% elif order.status == 'confirmed' %}s-prod{% elif order.status == 'pending' %}s-recue{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+            <td>{% include 'backoffice/_status_form.html' %}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="7" style="padding:16px;color:var(--gray);text-align:center;">Aucune commande trouvée.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bons Plans & ZenCard — JCEM GROUPE TOGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=3" />
+  <link rel="stylesheet" href="{% static 'client/css/bon_plan.css' %}?v=2" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo nav-logo-link" href="{% url 'client:home' %}">
+      <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'client:home' %}">Accueil</a>
+      <a href="{% url 'client:home' %}">Produits</a>
+      <a href="{% url 'client:home' %}">Fiche produit</a>
+      <a href="{% url 'client:home' %}">Panier</a>
+      <a href="{% url 'client:home' %}">Commander</a>
+      <a class="active" href="{% url 'client:bon_plan' %}">Bons Plans</a>
+    </div>
+    <div class="nav-actions">
+      <span>+228 90 30 55 88</span>
+      <a class="btn btn-primary" href="{% url 'client:home' %}">Commander</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ANNIVERSAIRE -->
+
+<div class="anniv-banner">
+  <div class="sec-in">
+    <div class="anniv-inner">
+      <div class="anniv-badge">20 ANS</div>
+      <div class="anniv-text">
+        Kapi Consult célèbre ses <strong>20 ans d'excellence</strong> au service des organisations.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+
+<section class="bp-hero">
+  <div class="sec-in">
+    <div class="bp-hero-tag">Kapi Consult</div>
+    <h1 class="bp-hero-title">Bons Plans <em>&</em> ZenCard</h1>
+    <p class="bp-hero-text">Offres spéciales, promotions et avantages exclusifs sélectionnés pour vous.</p>
+    <button class="btn btn-primary" onclick="openZencard()">💳 Recharger ma ZenCard</button>
+  </div>
+</section>
+
+<!-- BONS PLANS -->
+
+<section class="bp-section">
+  <div class="sec-in">
+
+    <div class="section-center-text reveal">
+      <div class="sec-eye">Offres & Promotions</div>
+      <h2 class="sec-title">Nos bons plans du moment</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto;">Sélection d'offres spéciales et d'avantages ZenCard réservés à nos clients.</p>
+    </div>
+
+    <div class="bp-grid reveal-stagger">
+
+      <!-- CARD 1 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub2.jpg' %}','ZenCard – Offre Spéciale')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub2.jpg' %}" class="bp-img" alt="ZenCard – Offre Spéciale">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Offre Spéciale</span></div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub3.jpg' %}','ZenCard – Promotion Exclusive')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub3.jpg' %}" class="bp-img" alt="ZenCard – Promotion Exclusive">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Promotion Exclusive</span></div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub5.jpg' %}','ZenCard – Bon Plan #5')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub5.jpg' %}" class="bp-img" alt="ZenCard – Bon Plan #5">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Bon Plan #5</span></div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub5b.jpg' %}','ZenCard – Édition Spéciale')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub5b.jpg' %}" class="bp-img" alt="ZenCard – Édition Spéciale">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Édition Spéciale</span></div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub6.jpg' %}','ZenCard – Bon Plan #6')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub6.jpg' %}" class="bp-img" alt="ZenCard – Bon Plan #6">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Bon Plan #6</span></div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub6b.jpg' %}','ZenCard – Offre Limitée')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub6b.jpg' %}" class="bp-img" alt="ZenCard – Offre Limitée">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Offre Limitée</span></div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_pub7.jpg' %}','ZenCard – Bon Plan #7')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_pub7.jpg' %}" class="bp-img" alt="ZenCard – Bon Plan #7">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Bon Plan #7</span></div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="bp-card" onclick="openAffiche('{% static 'client/images/zencard_product.jpg' %}','ZenCard – Le Produit')">
+        <span class="bp-badge">ZenCard</span>
+        <img src="{% static 'client/images/zencard_product.jpg' %}" class="bp-img" alt="ZenCard – Le Produit">
+        <div class="bp-overlay"><span style="color:white;font-size:13px;font-weight:600">🔍 Agrandir</span></div>
+        <div class="bp-footer"><span class="bp-name">ZenCard – Le Produit</span></div>
+      </div>
+
+      <!-- CARD TEXTE -->
+      <div class="bp-text-card">
+        <div class="bp-icon">💡</div>
+        <span class="bp-mini-badge">Bon Plan</span>
+        <h3 class="bp-text-title">Formation Gratuite : Excel RH</h3>
+        <p class="bp-text">Kapi Consult vous offre un accès gratuit à sa formation Excel RH.</p>
+        <a href="#" class="bp-link">Voir le détail →</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+
+<div id="lb-modal" class="lb-bg" onclick="closeLb()">
+  <div style="position:relative;display:flex;flex-direction:column;align-items:center;max-width:640px;width:94%;" onclick="event.stopPropagation()">
+    <button class="lb-close" onclick="closeLb()">×</button>
+    <img id="lb-img" src="" alt="" class="lb-img">
+    <div id="lb-title" class="lb-title"></div>
+  </div>
+</div>
+
+<!-- MODAL ZENCARD -->
+
+<div id="zencard-modal" class="zc-modal-bg">
+  <div class="zc-modal-box">
+    <button class="zc-close" onclick="closeZencard()">×</button>
+    <div class="zc-icon">💳</div>
+    <h2 class="zc-title">Recharge ZenCard</h2>
+    <p class="zc-text">Le système de recharge sera bientôt disponible.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo-box">
+        <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="footer-logo-img">
+      </div>
+      <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produits</h4>
+      <a href="{% url 'client:home' %}">Béton C20/25</a>
+      <a href="{% url 'client:home' %}">Béton C25/30</a>
+      <a href="{% url 'client:home' %}">Béton C30/37</a>
+      <a href="{% url 'client:home' %}">Béton C35/45</a>
+      <a href="{% url 'client:home' %}">Mortier prêt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="{% url 'client:home' %}">Livraison chantier</a>
+      <a href="{% url 'client:home' %}">Calcul de volume</a>
+      <a href="{% url 'client:bon_plan' %}">Bons Plans & ZenCard</a>
+      <a href="{% url 'client:home' %}">Suivi commande</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>+228 90 30 55 88</p>
+      <p>contact@jcemgroupe.tg</p>
+      <p>Lomé, Togo</p>
+      <p>Lun–Sam : 7h – 18h</p>
+      <div class="footer-payment-badges">
+        <span class="footer-pay-badge">Mixx by Yas</span>
+        <span class="footer-pay-badge">Flooz</span>
+        <span class="footer-pay-badge">Carte bancaire</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p>
+    <p>Béton prêt à l'emploi · Lomé · Togo</p>
+  </div>
+</footer>
+
+<script src="{% static 'client/js/main.js' %}?v=3"></script>
+<script src="{% static 'client/js/bon_plan.js' %}?v=2"></script>
+</body>
+</html>

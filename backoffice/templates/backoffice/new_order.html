@@ -1,0 +1,45 @@
+{% extends 'backoffice/base.html' %}
+{% block title %}Nouvelle commande — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Nouvelle commande</h1>
+    <div class="topbar-actions">
+      <span class="topbar-date">{% now "D d M Y" %}</span>
+      <a class="btn btn-secondary" href="{% url 'backoffice:orders' %}">Retour aux commandes</a>
+    </div>
+  </div>
+  <div class="admin-content">
+    <div class="admin-card">
+      <div class="admin-card-hdr"><div class="admin-card-title">Créer une commande</div></div>
+      <div class="form-grid">
+        <form method="post">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <div class="form-errors">{{ form.non_field_errors }}</div>
+          {% endif %}
+          <div class="form-row">
+            <div class="fld">{{ form.first_name.label_tag }}{{ form.first_name }}</div>
+            <div class="fld">{{ form.last_name.label_tag }}{{ form.last_name }}</div>
+          </div>
+          <div class="form-row">
+            <div class="fld">{{ form.phone.label_tag }}{{ form.phone }}</div>
+            <div class="fld">{{ form.email.label_tag }}{{ form.email }}</div>
+          </div>
+          <div class="form-row">
+            <div class="fld">{{ form.company.label_tag }}{{ form.company }}</div>
+            <div class="fld">{{ form.address.label_tag }}{{ form.address }}</div>
+          </div>
+          <div class="form-row">
+            <div class="fld">{{ form.delivery_slot.label_tag }}{{ form.delivery_slot }}</div>
+            <div class="fld">{{ form.payment_method.label_tag }}{{ form.payment_method }}</div>
+          </div>
+          <div class="form-row">
+            <div class="fld">{{ form.total_amount.label_tag }}{{ form.total_amount }}</div>
+            <div class="fld">{{ form.instructions.label_tag }}{{ form.instructions }}</div>
+          </div>
+          <button class="btn btn-primary" type="submit">Enregistrer la commande</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

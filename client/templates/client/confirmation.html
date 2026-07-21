@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmation de la commande — JCEM TOGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=3" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo nav-logo-link" onclick="window.location.href='/'" role="button" tabindex="0">
+        <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
+      </div>
+    </div>
+  </nav>
+
+  <main class="confirm-wrap">
+    <div class="confirm-icon">✓</div>
+    <h1>Commande confirmée !</h1>
+    <p>Votre commande <strong>#JCM-{{ order.pk }}</strong> a bien été enregistrée.</p>
+    <div class="confirm-detail">
+      <div class="pod-row"><span class="lbl">Nom</span><span class="val">{{ order.first_name }} {{ order.last_name }}</span></div>
+      <div class="pod-row"><span class="lbl">Téléphone</span><span class="val">{{ order.phone }}</span></div>
+      <div class="pod-row"><span class="lbl">Mode de paiement</span><span class="val">{{ order.get_payment_method_display }}</span></div>
+      <div class="pod-row"><span class="lbl">Créneau</span><span class="val">{{ order.delivery_slot }}</span></div>
+      <div class="pod-row"><span class="lbl">Total</span><span class="val total-val">{{ formatted_total }} FCFA</span></div>
+    </div>
+    <div class="confirmation-actions">
+      <button class="btn btn-primary" onclick="window.location.href='/'">Retour à l'accueil</button>
+    </div>
+  </main>
+
+  <script src="{% static 'client/js/main.js' %}?v=3"></script>
+</body>
+</html>

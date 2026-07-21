@@ -1,0 +1,45 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Dashboard — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Dashboard production</h1>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:12px;color:var(--gray);">{% now "D d M Y" %}</span>
+      <a class="btn btn-primary" href="{% url 'backoffice:new_order' %}" style="padding:7px 14px;font-size:12px;">+ Nouvelle commande</a>
+    </div>
+  </div>
+  <div class="admin-content">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="stat-lbl">Commandes récentes</div><div class="stat-val">{{ stats.today_orders }}</div><div class="stat-chg">Dernières 5 commandes</div></div>
+      <div class="stat-card"><div class="stat-lbl">CA estimé</div><div class="stat-val red">{{ stats.total_revenue|intcomma }} FCFA</div><div class="stat-chg" style="color:var(--red);">Basé sur 5 dernières commandes</div></div>
+      <div class="stat-card"><div class="stat-lbl">Livraisons en route</div><div class="stat-val">{{ stats.in_route }}</div><div class="stat-chg">Camions actifs</div></div>
+      <div class="stat-card"><div class="stat-lbl">Livrées</div><div class="stat-val">{{ stats.delivered }}</div><div class="stat-chg">Commandes clôturées</div></div>
+    </div>
+
+    <div class="admin-card">
+      <div class="admin-card-hdr"><div class="admin-card-title">Commandes récentes</div><a href="{% url 'backoffice:orders' %}" style="font-size:12px;color:var(--red);">Voir tout →</a></div>
+      <div class="atable-wrap">
+      <table class="atable">
+        <thead><tr><th>#</th><th>Client</th><th>Produits</th><th>Total</th><th>Livraison</th><th>Paiement</th><th>Statut</th><th>Action</th></tr></thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td style="font-weight:600;color:var(--red);">{{ order.order_reference }}</td>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+            <td>{{ order.products|length }} item(s)</td>
+            <td>{{ order.total_amount|intcomma }} FCFA</td>
+            <td>{{ order.delivery_slot }}</td>
+            <td>{{ order.get_payment_method_display }}</td>
+            <td><span class="sbadge {% if order.status == 'delivered' %}s-livre{% elif order.status == 'delivering' %}s-route{% elif order.status == 'confirmed' %}s-prod{% elif order.status == 'pending' %}s-recue{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+            <td>{% include 'backoffice/_status_form.html' %}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="8" style="padding:16px;color:var(--gray);text-align:center;">Aucune commande trouvée.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Facturation — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Facturation</h1>
+    <span class="topbar-date">{% now "D d M Y" %}</span>
+  </div>
+  <div class="admin-content">
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-lbl">Chiffre d'affaires total</div>
+        <div class="stat-val red">{{ total_revenue|intcomma }} FCFA</div>
+        <div class="stat-chg" style="color:var(--red);">Toutes commandes confondues</div>
+      </div>
+      {% for method in by_method %}
+      <div class="stat-card">
+        <div class="stat-lbl">{{ method.label }}</div>
+        <div class="stat-val">{{ method.amount|intcomma }} FCFA</div>
+        <div class="stat-chg">Encaissé via ce moyen</div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="admin-card">
+      <div class="admin-card-hdr"><div class="admin-card-title">Commandes et paiements</div></div>
+      <div class="atable-wrap">
+      <table class="atable">
+        <thead><tr><th>#</th><th>Client</th><th>Montant</th><th>Moyen de paiement</th><th>Statut commande</th></tr></thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td style="font-weight:600;color:var(--red);">{{ order.order_reference }}</td>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+            <td>{{ order.total_amount|intcomma }} FCFA</td>
+            <td>{{ order.get_payment_method_display }}</td>
+            <td><span class="sbadge {% if order.status == 'delivered' %}s-livre{% elif order.status == 'cancelled' %}s-recue{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="5" style="padding:16px;color:var(--gray);text-align:center;">Aucune commande facturée pour l'instant.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

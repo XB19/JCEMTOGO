@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Back-office JCEM{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'backoffice/css/admin.css' %}" />
+</head>
+<body>
+  <div class="admin-mobile-bar">
+    <button type="button" class="admin-menu-toggle" id="admin-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="admin-sb">☰</button>
+    <div class="admin-logo-box admin-logo-box-sm">
+      <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="admin-logo-img admin-logo-img-sm">
+    </div>
+  </div>
+  <div class="admin-overlay" id="admin-overlay"></div>
+  <div class="admin-layout">
+    <aside class="admin-sb" id="admin-sb">
+      <div class="admin-sb-logo">
+        <div class="admin-logo-box">
+          <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="admin-logo-img">
+        </div>
+        <div class="logo-sub">BACK-OFFICE</div>
+      </div>
+      <div class="anav-section">Principal</div>
+      <a class="anav-item {% if active == 'dashboard' %}active{% endif %}" href="{% url 'backoffice:dashboard' %}">Dashboard</a>
+      <a class="anav-item {% if active == 'orders' %}active{% endif %}" href="{% url 'backoffice:orders' %}">Commandes</a>
+      <a class="anav-item {% if active == 'deliveries' %}active{% endif %}" href="{% url 'backoffice:deliveries' %}">Livraisons / POD</a>
+      <div class="anav-section">Production</div>
+      <a class="anav-item {% if active == 'planning' %}active{% endif %}" href="{% url 'backoffice:planning' %}">Planning</a>
+      <a class="anav-item {% if active == 'trucks' %}active{% endif %}" href="{% url 'backoffice:trucks' %}">Camions</a>
+      <div class="anav-section">Finances</div>
+      <a class="anav-item {% if active == 'billing' %}active{% endif %}" href="{% url 'backoffice:billing' %}">Facturation</a>
+      <a class="anav-item {% if active == 'reports' %}active{% endif %}" href="{% url 'backoffice:reports' %}">Statistiques</a>
+      <div class="anav-section">Site</div>
+      <a class="anav-item" href="{% url 'client:home' %}">← Retour au site client</a>
+    </aside>
+    <main class="admin-main">
+      {% if messages %}
+        <div class="message-stack">
+          {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script src="{% static 'backoffice/js/admin.js' %}"></script>
+</body>
+</html>

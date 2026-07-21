@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCEM GROUPE TOGO — Béton Prêt à l'Emploi</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#2a2627;--black-100:#3a3536;--gray:#878786;--gray-100:#bdbdbd;--gray-200:#636362;--red:#671314;--red-100:#8b1a1b;--red-200:#4f0f0f;--red-light:rgba(103,19,20,0.07);--white:#ffffff;--bg:#f7f7f7;--bg-2:#f0efef;--border:#e5e3e3;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--black);font-size:15px;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+.poppins{font-family:'Poppins',sans-serif;}
+.page{display:none;}.page.active{display:block;}
+/* NAV */
+.nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,0.06);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:64px;gap:24px;}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-logo-text{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:var(--black);}
+.nav-logo-text span{color:var(--red);}
+.nav-logo-sub{font-size:10px;color:var(--gray);letter-spacing:2px;display:block;}
+.nav-links{display:flex;gap:20px;flex:1;}
+.nav-links a{font-size:13px;color:var(--gray-200);font-weight:500;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--red);border-bottom-color:var(--red);}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:background .2s;font-family:'Inter',sans-serif;}
+.btn-primary{background:var(--red);color:#fff;}.btn-primary:hover{background:var(--red-100);}
+.btn-secondary{background:transparent;color:var(--black);border:1px solid var(--border);}.btn-secondary:hover{background:var(--bg);}
+.btn-outline-red{background:transparent;color:var(--red);border:1.5px solid var(--red);}.btn-outline-red:hover{background:var(--red-light);}
+.w-full{width:100%;justify-content:center;}
+/* HERO */
+.hero-inner{max-width:1200px;margin:0 auto;padding:56px 24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;}
+.hero-badge span{width:6px;height:6px;background:var(--red);border-radius:50%;display:inline-block;}
+.hero h1{font-family:'Poppins',sans-serif;font-size:38px;font-weight:800;color:var(--black);line-height:1.15;margin-bottom:14px;}
+.hero h1 em{color:var(--red);font-style:normal;}
+.hero-desc{color:var(--gray-200);font-size:14px;line-height:1.7;margin-bottom:24px;}
+.hero-ctas{display:flex;gap:10px;margin-bottom:32px;}
+.hero-stats{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg);}
+.hero-stat{flex:1;padding:14px 12px;text-align:center;border-right:1px solid var(--border);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-val{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:var(--red);}
+.hero-stat-label{font-size:10px;color:var(--gray);margin-top:2px;}
+.hero-img{width:100%;height:320px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg-2);display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-float{position:absolute;bottom:14px;left:14px;background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 13px;display:flex;align-items:center;gap:9px;box-shadow:0 4px 14px rgba(0,0,0,0.09);}
+.dot-green{width:9px;height:9px;background:#16a34a;border-radius:50%;}
+/* PROCESS */
+.process-bar{background:var(--white);border-bottom:1px solid var(--border);}
+.process-bar-inner{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;align-items:center;gap:9px;}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;flex-shrink:0;}
+.step-num.s-active{background:var(--red);color:#fff;}.step-num.s-done{background:var(--black);color:#fff;}.step-num.s-idle{background:var(--bg-2);color:var(--gray);}
+.step-text{font-size:13px;font-weight:500;}.step-sub{font-size:10px;color:var(--gray);}
+.step-line{width:56px;height:1px;background:var(--border);margin:0 14px;}
+/* SECTION */
+.section{padding:52px 0;}.sec-in{max-width:1200px;margin:0 auto;padding:0 24px;}
+.sec-eye{font-size:11px;font-weight:600;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.sec-title{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;color:var(--black);}
+.sec-sub{font-size:13px;color:var(--gray-200);margin-top:5px;}
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.pcard{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pcard:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08);transform:translateY(-2px);}
+.pcard-img{height:170px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;position:relative;}
+.pcard-badge{position:absolute;top:10px;right:10px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;}
+.pcard-body{padding:15px;}
+.pcard-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--black);margin-bottom:4px;}
+.pcard-desc{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.5;}
+.pcard-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.ptag{background:var(--bg);color:var(--gray-200);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);}
+.pcard-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border);}
+.pcard-price{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--red);}
+.pcard-price span{font-size:11px;font-weight:400;color:var(--gray);}
+/* CALC */
+.calc-section{background:var(--black);}
+.calc-inner{max-width:1200px;margin:0 auto;padding:52px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.calc-left h2{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px;}
+.calc-left p{color:var(--gray-100);font-size:13px;line-height:1.7;margin-bottom:20px;}
+.calc-feat{display:flex;align-items:center;gap:9px;margin-bottom:8px;}
+.calc-feat-dot{width:6px;height:6px;background:var(--red);border-radius:50%;flex-shrink:0;}
+.calc-feat span{color:var(--gray-100);font-size:13px;}
+.calc-form{background:#fff;border-radius:12px;padding:24px;}
+.calc-form h3{font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--black);margin-bottom:18px;}
+.calc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;}
+.cfield label{font-size:11px;font-weight:600;color:var(--gray-200);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+.cfield input,.cfield select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;background:var(--bg);color:var(--black);outline:none;}
+.cfield input:focus,.cfield select:focus{border-color:var(--red);}
+.calc-result{background:var(--bg);border-radius:8px;padding:14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+.calc-vol{font-family:'Poppins',sans-serif;font-size:26px;font-weight:700;color:var(--red);}
+.calc-price-val{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--black);}
+.calc-price-lbl{font-size:11px;color:var(--gray);}
+/* PAYMENT */
+.pay-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.pay-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;}
+.pay-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.pay-name{font-weight:600;font-size:13px;color:var(--black);}
+.pay-sub{font-size:11px;color:var(--gray);margin-top:2px;}
+/* FOOTER */
+.footer{background:var(--black);color:var(--white);}
+.footer-main{max-width:1200px;margin:0 auto;padding:44px 24px 28px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;}
+.footer-brand p{color:var(--gray-100);font-size:13px;line-height:1.7;margin-top:10px;max-width:240px;}
+.footer-col h4{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:#fff;margin-bottom:12px;}
+.footer-col a,.footer-col p{display:block;color:var(--gray-100);font-size:12px;margin-bottom:7px;}
+.footer-col a:hover{color:#fff;}
+.footer-pay-badge{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-size:10px;font-weight:600;padding:3px 9px;border-radius:4px;display:inline-block;margin:2px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:14px 24px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-bottom p{font-size:11px;color:var(--gray);}
+/* CATALOGUE */
+.page-tabs{background:var(--white);border-bottom:2px solid var(--border);position:sticky;top:64px;z-index:90;}
+.page-tabs-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;}
+.ptab{padding:13px 18px;font-size:13px;font-weight:500;color:var(--gray-200);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.ptab:hover,.ptab.active{color:var(--red);border-bottom-color:var(--red);}
+.breadcrumb-nav{max-width:1200px;margin:0 auto;padding:14px 24px;font-size:12px;color:var(--gray);}
+.breadcrumb-nav span{color:var(--red);}
+/* PRODUCT DETAIL */
+.prod-detail{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.prod-main-img{height:300px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:10px;}
+.prod-thumbs{display:flex;gap:7px;margin-top:9px;}
+.prod-thumb{width:66px;height:46px;background:var(--bg-2);border-radius:6px;border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gray);}
+.prod-thumb.active{border-color:var(--red);}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:14px 0;}
+.spec-item{background:var(--bg);border-radius:6px;padding:9px 11px;}
+.spec-lbl{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;}
+.spec-val{font-size:13px;font-weight:600;color:var(--black);margin-top:2px;}
+.qty-step{display:flex;align-items:center;gap:10px;margin:16px 0;}
+.qty-step button{width:34px;height:34px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:16px;color:var(--black);display:flex;align-items:center;justify-content:center;}
+.qty-step input{width:65px;text-align:center;border:1px solid var(--border);border-radius:6px;padding:7px;font-size:14px;font-weight:600;}
+.tabs-nav{display:flex;border-bottom:1px solid var(--border);max-width:1200px;margin:0 auto;padding:0 24px;}
+.tabs-nav .tab{padding:9px 14px;font-size:13px;font-weight:500;color:var(--gray-200);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;}
+.tabs-nav .tab.active{color:var(--red);border-bottom-color:var(--red);}
+.tabs-content{max-width:1200px;margin:0 auto;padding:22px 24px 40px;}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+/* CART */
+.cart-layout{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start;}
+.card-box{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.card-box-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.card-box-hdr h2,.card-box-hdr h3{font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--black);}
+.cart-item{display:grid;grid-template-columns:76px 1fr auto auto;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);}
+.cart-item:last-child{border-bottom:none;}
+.cart-item-img{width:76px;height:52px;background:var(--bg-2);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.citem-name{font-weight:600;font-size:13px;}.citem-sub{font-size:11px;color:var(--gray);margin-top:1px;}
+.cart-qty{display:flex;align-items:center;gap:7px;}
+.cart-qty button{width:26px;height:26px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:14px;color:var(--gray-200);}
+.cart-qty input{width:46px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:4px;font-size:12px;}
+.citem-price{font-family:'Poppins',sans-serif;font-weight:700;color:var(--red);font-size:14px;text-align:right;}
+.summary-box{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;position:sticky;top:80px;}
+.summary-box h3{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;margin-bottom:14px;color:var(--black);}
+.sum-line{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-200);margin-bottom:8px;}
+.sum-total{display:flex;justify-content:space-between;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;padding-top:10px;margin-top:4px;border-top:1px solid var(--border);color:var(--black);}
+.sum-total span:last-child{color:var(--red);}
+/* SLOTS */
+.slot-grid{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;}
+.slot{padding:7px 13px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--white);transition:all .2s;}
+.slot:hover{border-color:var(--red);}.slot.selected{border-color:var(--red);background:var(--red-light);color:var(--red);font-weight:600;}
+.slot.full{background:var(--bg);color:var(--gray-100);cursor:not-allowed;}
+/* CHECKOUT */
+.checkout-layout{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 320px;gap:20px;}
+.cblock{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.cblock-hdr{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;}
+.cstep-num{width:22px;height:22px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.cblock-hdr h3{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--black);}
+.cblock-body{padding:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.fld{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;}
+.fld label{font-size:10px;font-weight:600;color:var(--gray-200);text-transform:uppercase;letter-spacing:.4px;}
+.fld input,.fld textarea,.fld select{padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;background:var(--bg);color:var(--black);outline:none;}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--red);background:#fff;}
+.pay-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.pay-opt{border:1px solid var(--border);border-radius:8px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;transition:all .2s;background:var(--white);}
+.pay-opt:hover,.pay-opt.selected{border-color:var(--red);background:var(--red-light);}
+.pay-opt-lbl{font-size:11px;font-weight:600;color:var(--black);}
+/* CONFIRMATION */
+.confirm-wrap{max-width:580px;margin:48px auto;padding:0 24px;text-align:center;}
+.confirm-icon{width:60px;height:60px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.confirm-wrap h1{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--black);margin-bottom:7px;}
+.confirm-wrap p{color:var(--gray-200);font-size:14px;margin-bottom:20px;}
+.confirm-detail{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:left;margin-bottom:18px;}
+.pod-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--bg-2);font-size:13px;}
+.pod-row:last-child{border-bottom:none;}
+.pod-row .lbl{color:var(--gray);}
+.pod-row .val{font-weight:600;color:var(--black);}
+.notif-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+.notif-badge{display:flex;align-items:center;gap:5px;background:var(--bg);border:1px solid var(--border);padding:7px 12px;border-radius:6px;font-size:11px;font-weight:500;}
+/* POD */
+.pod-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:580px;margin:0 auto 52px;}
+.pod-hdr{background:var(--black);padding:14px 18px;display:flex;align-items:center;gap:10px;}
+.pod-hdr h2{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#fff;}
+.pod-status{background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;margin-left:auto;}
+.pod-body{padding:18px;}
+.pod-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.pod-photo{height:130px;background:var(--bg-2);border-radius:7px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+.pod-sig{border:2px dashed var(--gray-100);border-radius:7px;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+/* ADMIN */
+.admin-layout{display:grid;grid-template-columns:210px 1fr;min-height:100vh;}
+.admin-sb{background:var(--black);}
+.admin-sb-logo{padding:18px 14px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.admin-sb-logo .logo-txt{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#fff;}
+.admin-sb-logo .logo-txt span{color:var(--red);}
+.admin-sb-logo .logo-sub{font-size:10px;color:var(--gray);letter-spacing:2px;margin-top:1px;}
+.anav-section{font-size:10px;color:rgba(255,255,255,0.3);padding:14px 14px 5px;letter-spacing:1.5px;text-transform:uppercase;}
+.anav-item{display:flex;align-items:center;gap:9px;padding:10px 14px;color:rgba(255,255,255,0.6);font-size:12px;cursor:pointer;transition:all .2s;border-left:3px solid transparent;}
+.anav-item:hover{background:rgba(255,255,255,0.06);color:#fff;}
+.anav-item.active{background:rgba(103,19,20,0.25);color:#fff;border-left-color:var(--red);}
+.admin-main{background:var(--bg);}
+.admin-topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 22px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.admin-topbar h1{font-family:'Poppins',sans-serif;font-size:16px;font-weight:600;color:var(--black);}
+.admin-content{padding:22px;}
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:14px 17px;}
+.stat-lbl{font-size:11px;color:var(--gray);margin-bottom:5px;}
+.stat-val{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;color:var(--black);}
+.stat-val.red{color:var(--red);}
+.stat-chg{font-size:10px;color:#16a34a;margin-top:3px;}
+.admin-card{background:var(--white);border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-bottom:18px;}
+.admin-card-hdr{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.admin-card-title{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--black);}
+.cap-bar{height:9px;background:var(--bg-2);border-radius:5px;overflow:hidden;}
+.cap-fill{height:100%;border-radius:5px;}
+.sbadge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:4px;font-size:10px;font-weight:600;}
+.s-recue{background:#eff6ff;color:#1d4ed8;}.s-prod{background:#fef3c7;color:#b45309;}
+.s-route{background:#f0fdf4;color:#15803d;}.s-livre{background:#e0f2f1;color:#0f766e;}
+.atable{width:100%;border-collapse:collapse;font-size:12px;}
+.atable th{text-align:left;padding:9px 12px;font-size:10px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);}
+.atable td{padding:11px 12px;border-bottom:1px solid var(--bg-2);color:var(--black);}
+.atable tr:last-child td{border-bottom:none;}
+.atable tr:hover td{background:var(--bg);}
+</style>
+</head>
+<body>
+<!-- ======= NAV ======= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="17" cy="17" r="16" fill="#2a2627"/>
+        <circle cx="17" cy="24" r="5" fill="#671314"/>
+        <path d="M17 9 C13 13 9 17 17 21 C25 17 21 13 17 9Z" fill="#671314" opacity="0.75"/>
+        <circle cx="17" cy="12" r="3" fill="#fff" opacity="0.9"/>
+      </svg>
+      <div>
+        <div class="nav-logo-text"><span>JCEM</span> GROUPE</div>
+        <span class="nav-logo-sub">TOGO</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a class="active" onclick="showPage('home',this)">Accueil</a>
+      <a onclick="showPage('produits',this)">Produits</a>
+      <a onclick="showPage('detail',this)">Fiche produit</a>
+      <a onclick="showPage('panier',this)">Panier</a>
+      <a onclick="showPage('checkout',this)">Commander</a>
+      <a onclick="showPage('confirmation',this)">Confirmation</a>
+      <a onclick="showPage('admin',this)">Admin</a>
+    </div>
+    <div class="nav-actions">
+      <span style="font-size:12px;color:var(--gray-200);">+228 90 00 00 00</span>
+      <button class="btn btn-secondary" onclick="showPage('panier',null)">🛒 Panier (3)</button>
+      <button class="btn btn-primary" onclick="showPage('checkout',null)">Commander</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= PAGE: ACCUEIL ======= -->
+<div id="page-home" class="page active">
+  <!-- HERO -->
+  <section style="background:var(--white);border-bottom:1px solid var(--border);">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span></span> Lomé, Togo · Livraison chantier</div>
+        <h1 class="poppins">Béton prêt à l'emploi,<br><em>livré sur votre chantier</em></h1>
+        <p class="hero-desc">Commandez en ligne, suivez votre production en temps réel et recevez une preuve de livraison photo. Simple, fiable, certifié NF EN 206.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="showPage('produits',null)">Voir les produits</button>
+          <button class="btn btn-outline-red" onclick="document.getElementById('calc-anc').scrollIntoView({behavior:'smooth'})">Calculer mon volume</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-val">500+</div><div class="hero-stat-label">Chantiers livrés</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">24h</div><div class="hero-stat-label">Délai production</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-label">Traçabilité POD</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">4</div><div class="hero-stat-label">Paiements acceptés</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-img">
+          <svg width="360" height="280" viewBox="0 0 360 280" fill="none">
+            <rect width="360" height="280" fill="#f0efef"/>
+            <!-- Bâtiment -->
+            <rect x="40" y="80" width="120" height="130" fill="#d4cece"/>
+            <rect x="55" y="95" width="22" height="32" fill="#878786"/>
+            <rect x="90" y="95" width="22" height="32" fill="#878786"/>
+            <rect x="125" y="95" width="22" height="32" fill="#878786"/>
+            <rect x="55" y="140" width="22" height="32" fill="#878786"/>
+            <rect x="90" y="140" width="22" height="32" fill="#671314" opacity="0.6"/>
+            <rect x="125" y="140" width="22" height="32" fill="#878786"/>
+            <!-- Grue -->
+            <rect x="180" y="20" width="7" height="180" fill="#3a3536"/>
+            <rect x="180" y="20" width="100" height="7" fill="#3a3536"/>
+            <rect x="272" y="27" width="4" height="70" fill="#636362"/>
+            <!-- Camion -->
+            <rect x="190" y="178" width="110" height="46" rx="4" fill="#2a2627"/>
+            <rect x="220" y="164" width="80" height="28" rx="3" fill="#3a3536"/>
+            <circle cx="205" cy="228" r="11" fill="#636362"/><circle cx="205" cy="228" r="5" fill="#bdbdbd"/>
+            <circle cx="285" cy="228" r="11" fill="#636362"/><circle cx="285" cy="228" r="5" fill="#bdbdbd"/>
+            <!-- Malaxeur -->
+            <ellipse cx="250" cy="162" rx="20" ry="24" fill="#671314" opacity="0.85"/>
+            <line x1="250" y1="138" x2="250" y2="186" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+            <line x1="230" y1="162" x2="270" y2="162" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+            <!-- Sol -->
+            <rect y="240" width="360" height="40" fill="#d4cece"/>
+            <!-- Flèche -->
+            <path d="M160 195 L190 195" stroke="#671314" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+            <defs><marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#671314"/></marker></defs>
+            <!-- Badge -->
+            <rect x="50" y="46" width="90" height="22" rx="4" fill="#671314"/>
+            <text x="95" y="61" font-family="Poppins" font-size="10" fill="white" text-anchor="middle" font-weight="700">En construction</text>
+          </svg>
+          <div class="hero-float">
+            <div class="dot-green"></div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--black);">Livraison en cours</div>
+              <div style="font-size:10px;color:var(--gray);">Camion BPE-01 · Avédji</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <div class="process-bar">
+    <div class="process-bar-inner">
+      <div class="step"><div class="step-num s-active">1</div><div><div class="step-text">Commander en ligne</div><div class="step-sub">Choix produit + volume</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-done">2</div><div><div class="step-text">Production certifiée</div><div class="step-sub">24h · Centrale béton</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-done">3</div><div><div class="step-text">Livraison chantier</div><div class="step-sub">Créneau choisi · GPS</div></div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num s-idle">4</div><div><div class="step-text">Preuve POD</div><div class="step-sub">Photo + signature + facture</div></div></div>
+    </div>
+  </div>
+
+  <!-- PRODUITS VEDETTES -->
+  <section class="section" style="background:var(--white);">
+    <div class="sec-in">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;">
+        <div><div class="sec-eye">Notre gamme</div><h2 class="sec-title">Bétons prêts à l'emploi</h2></div>
+        <button class="btn btn-outline-red" onclick="showPage('produits',null)">Voir tout →</button>
+      </div>
+      <div class="products-grid">
+        <div class="pcard">
+          <div class="pcard-img">
+            <svg width="260" height="160" viewBox="0 0 260 160" fill="none"><rect width="260" height="160" fill="#f0efef"/><rect x="10" y="90" width="240" height="50" rx="3" fill="#d4cece"/><rect x="20" y="55" width="55" height="65" fill="#bdbdbd"/><rect x="90" y="65" width="70" height="55" fill="#bdbdbd"/><rect x="180" y="80" width="50" height="40" fill="#bdbdbd"/><text x="130" y="36" font-family="Poppins" font-size="20" fill="#671314" text-anchor="middle" font-weight="800">C20/25</text><text x="130" y="52" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Chape · Trottoir · Faible charge</text></svg>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C20/25</div>
+            <div class="pcard-desc">Chapes, trottoirs et ouvrages à faible charge. Résistance 20 MPa.</div>
+            <div class="pcard-tags"><span class="ptag">Chape</span><span class="ptag">Trottoir</span><span class="ptag">Faible charge</span></div>
+            <div class="pcard-footer"><div class="pcard-price">65 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 13px;font-size:12px;" onclick="showPage('detail',null)">Voir →</button></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img">
+            <svg width="260" height="160" viewBox="0 0 260 160" fill="none"><rect width="260" height="160" fill="#f0efef"/><rect x="10" y="100" width="240" height="40" rx="3" fill="#c9c4c4"/><rect x="15" y="45" width="45" height="75" fill="#bdbdbd"/><rect x="80" y="55" width="55" height="65" fill="#bdbdbd"/><rect x="155" y="50" width="50" height="70" fill="#bdbdbd"/><rect x="220" y="65" width="30" height="55" fill="#bdbdbd"/><text x="130" y="32" font-family="Poppins" font-size="20" fill="#671314" text-anchor="middle" font-weight="800">C25/30</text><text x="130" y="48" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Fondations · Dallage · Voile</text></svg>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C25/30</div>
+            <div class="pcard-desc">Fondations superficielles, dallages structurels, voiles de sous-sol.</div>
+            <div class="pcard-tags"><span class="ptag">Fondation</span><span class="ptag">Dallage</span><span class="ptag">Voile</span></div>
+            <div class="pcard-footer"><div class="pcard-price">75 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 13px;font-size:12px;" onclick="showPage('detail',null)">Voir →</button></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-img">
+            <div class="pcard-badge">POPULAIRE</div>
+            <svg width="260" height="160" viewBox="0 0 260 160" fill="none"><rect width="260" height="160" fill="#f0efef"/><rect x="10" y="115" width="240" height="30" rx="3" fill="#c2bcbc"/><rect x="20" y="28" width="22" height="107" fill="#bdbdbd"/><rect x="60" y="38" width="22" height="97" fill="#bdbdbd"/><rect x="100" y="33" width="22" height="102" fill="#bdbdbd"/><rect x="140" y="40" width="22" height="95" fill="#bdbdbd"/><rect x="180" y="35" width="22" height="100" fill="#bdbdbd"/><rect x="220" y="42" width="22" height="93" fill="#bdbdbd"/><rect x="10" y="68" width="240" height="10" fill="#a0a0a0" opacity="0.4"/><rect x="10" y="90" width="240" height="10" fill="#a0a0a0" opacity="0.3"/><text x="130" y="20" font-family="Poppins" font-size="18" fill="#671314" text-anchor="middle" font-weight="800">C30/37</text></svg>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-title">Béton C30/37</div>
+            <div class="pcard-desc">Poteaux, poutres, dalles de plancher, structures porteuses. 30 MPa.</div>
+            <div class="pcard-tags"><span class="ptag">Poteau</span><span class="ptag">Poutre</span><span class="ptag">Dalle</span><span class="ptag">Structure</span></div>
+            <div class="pcard-footer"><div class="pcard-price">85 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 13px;font-size:12px;" onclick="showPage('detail',null)">Voir →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATEUR -->
+  <div id="calc-anc" class="calc-section">
+    <div class="calc-inner">
+      <div class="calc-left">
+        <h2>Calculez votre volume exact</h2>
+        <p>Entrez les dimensions de l'ouvrage pour obtenir le volume et une estimation instantanée du coût en FCFA.</p>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Calcul L × l × H automatique</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Sélection du béton adapté</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Estimation de prix instantanée</span></div>
+        <div class="calc-feat"><div class="calc-feat-dot"></div><span>Commander directement depuis le calculateur</span></div>
+        <div style="margin-top:28px;">
+          <svg width="220" height="150" viewBox="0 0 220 150" fill="none">
+            <rect x="8" y="8" width="204" height="134" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+            <line x1="28" y1="122" x2="192" y2="122" stroke="#671314" stroke-width="2"/>
+            <line x1="28" y1="117" x2="28" y2="127" stroke="#671314" stroke-width="2"/>
+            <line x1="192" y1="117" x2="192" y2="127" stroke="#671314" stroke-width="2"/>
+            <text x="110" y="140" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Longueur (L)</text>
+            <line x1="22" y1="26" x2="22" y2="112" stroke="#671314" stroke-width="2"/>
+            <line x1="17" y1="26" x2="27" y2="26" stroke="#671314" stroke-width="2"/>
+            <line x1="17" y1="112" x2="27" y2="112" stroke="#671314" stroke-width="2"/>
+            <rect x="38" y="32" width="148" height="78" rx="3" fill="rgba(103,19,20,0.22)" stroke="#671314" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="112" y="73" font-family="Poppins" font-size="17" fill="white" text-anchor="middle" font-weight="700">V = L×l×H</text>
+            <text x="112" y="92" font-family="Inter" font-size="10" fill="rgba(255,255,255,0.55)" text-anchor="middle">en m³</text>
+          </svg>
+        </div>
+      </div>
+      <div class="calc-form">
+        <h3>Calculateur de volume</h3>
+        <div class="calc-row">
+          <div class="cfield"><label>Longueur (m)</label><input type="number" id="c-l" value="5" min="0" step="0.1" oninput="calcVol()"></div>
+          <div class="cfield"><label>Largeur (m)</label><input type="number" id="c-w" value="4" min="0" step="0.1" oninput="calcVol()"></div>
+          <div class="cfield"><label>Hauteur (m)</label><input type="number" id="c-h" value="0.20" min="0" step="0.05" oninput="calcVol()"></div>
+        </div>
+        <div class="cfield" style="margin-bottom:14px;"><label>Type de béton</label>
+          <select id="c-type" onchange="calcVol()">
+            <option value="65000">C20/25 — 65 000 FCFA/m³</option>
+            <option value="75000">C25/30 — 75 000 FCFA/m³</option>
+            <option value="85000" selected>C30/37 — 85 000 FCFA/m³</option>
+            <option value="98000">C35/45 — 98 000 FCFA/m³</option>
+          </select>
+        </div>
+        <div class="calc-result">
+          <div><div style="font-size:11px;color:var(--gray);margin-bottom:3px;">Volume calculé</div><div class="calc-vol" id="c-vol">4,00 m³</div></div>
+          <div style="text-align:right;"><div class="calc-price-val" id="c-price">340 000 FCFA</div><div class="calc-price-lbl">Estimation HT</div></div>
+        </div>
+        <button class="btn btn-primary w-full" style="padding:11px;" onclick="showPage('checkout',null)">Commander ce volume →</button>
+        <p style="font-size:11px;color:var(--gray);text-align:center;margin-top:8px;">Volume minimum : 0,5 m³ · Livraison incluse &gt; 2 m³</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIEMENTS -->
+  <section class="section" style="background:var(--white);">
+    <div class="sec-in">
+      <div style="text-align:center;margin-bottom:28px;">
+        <div class="sec-eye">Flexibilité</div>
+        <h2 class="sec-title">Moyens de paiement acceptés</h2>
+        <p class="sec-sub">Payez comme vous préférez — mobile money, virement ou espèces</p>
+      </div>
+      <div class="pay-grid">
+        <div class="pay-card"><div class="pay-icon" style="background:#fef3c7;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" fill="#f59e0b" opacity="0.35"/><text x="14" y="19" font-family="Poppins" font-size="10" fill="#b45309" text-anchor="middle" font-weight="700">TM</text></svg></div><div class="pay-name">T-Money</div><div class="pay-sub">Togocel Mobile Money</div></div>
+        <div class="pay-card"><div class="pay-icon" style="background:#dbeafe;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" fill="#3b82f6" opacity="0.35"/><text x="14" y="19" font-family="Poppins" font-size="10" fill="#1d4ed8" text-anchor="middle" font-weight="700">FL</text></svg></div><div class="pay-name">Flooz</div><div class="pay-sub">Moov Africa Mobile Money</div></div>
+        <div class="pay-card"><div class="pay-icon" style="background:#dcfce7;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="13" rx="2" stroke="#16a34a" stroke-width="1.8" fill="none"/><line x1="4" y1="13" x2="24" y2="13" stroke="#16a34a" stroke-width="1.8"/></svg></div><div class="pay-name">Virement bancaire</div><div class="pay-sub">BSIC, UTB, Ecobank</div></div>
+        <div class="pay-card"><div class="pay-icon" style="background:#f3f4f6;"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="7" width="18" height="15" rx="1.5" stroke="#374151" stroke-width="1.8" fill="none"/><path d="M10 7V5a4 4 0 018 0v2" stroke="#374151" stroke-width="1.8" fill="none"/></svg></div><div class="pay-name">Espèces (COD)</div><div class="pay-sub">Paiement à la livraison</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div>
+        <div class="nav-logo-text poppins" style="font-size:17px;"><span style="color:var(--red);">JCEM</span> GROUPE</div>
+        <div style="font-size:10px;color:var(--gray);letter-spacing:2px;margin-top:1px;">TOGO</div>
+        <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
+      </div>
+      <div class="footer-col"><h4>Produits</h4><a href="#">Béton C20/25</a><a href="#">Béton C25/30</a><a href="#">Béton C30/37</a><a href="#">Béton C35/45</a><a href="#">Mortier prêt</a></div>
+      <div class="footer-col"><h4>Services</h4><a href="#">Livraison chantier</a><a href="#">Calcul de volume</a><a href="#">Fiches techniques</a><a href="#">Suivi commande</a></div>
+      <div class="footer-col"><h4>Contact</h4><p>+228 90 00 00 00</p><p>contact@jcemgroupe.tg</p><p>Lomé, Togo</p><p>Lun–Sam : 7h – 18h</p><div style="margin-top:8px;"><span class="footer-pay-badge">T-Money</span><span class="footer-pay-badge">Flooz</span><span class="footer-pay-badge">Virement</span></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p><p>Béton prêt à l'emploi · Lomé · Togo</p></div>
+  </footer>
+</div>
+<!-- ======= PAGE: CATALOGUE ======= -->
+<div id="page-produits" class="page">
+  <div class="page-tabs"><div class="page-tabs-inner">
+    <div class="ptab active" onclick="filterProd('all',this)">Tous les produits</div>
+    <div class="ptab" onclick="filterProd('bpe',this)">Béton BPE</div>
+    <div class="ptab" onclick="filterProd('mortier',this)">Mortiers</div>
+    <div class="ptab" onclick="filterProd('agregat',this)">Agrégats</div>
+  </div></div>
+  <div class="sec-in" style="padding-top:36px;padding-bottom:56px;">
+    <div style="margin-bottom:24px;"><div class="sec-eye">Catalogue complet</div><h1 class="sec-title poppins">Nos produits</h1><p class="sec-sub">Bétons, mortiers et agrégats — livrés à Lomé et environs</p></div>
+    <div class="products-grid" id="prod-grid">
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><rect x="10" y="105" width="240" height="45" rx="3" fill="#d4cece"/><rect x="20" y="65" width="55" height="70" fill="#bdbdbd"/><rect x="90" y="75" width="70" height="60" fill="#bdbdbd"/><rect x="180" y="88" width="50" height="47" fill="#bdbdbd"/><text x="130" y="42" font-family="Poppins" font-size="22" fill="#671314" text-anchor="middle" font-weight="800">C20/25</text><text x="130" y="58" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Chape · Trottoir · Légère charge</text></svg></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C20/25</div><div class="pcard-desc">Pour chapes, trottoirs et ouvrages soumis à faible charge. 20 MPa.</div><div class="pcard-tags"><span class="ptag">Chape</span><span class="ptag">Trottoir</span><span class="ptag">Faible charge</span></div><div class="pcard-footer"><div class="pcard-price">65 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" onclick="showPage('detail',null)">Détails →</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><rect x="10" y="110" width="240" height="40" rx="3" fill="#c9c4c4"/><rect x="15" y="48" width="44" height="82" fill="#bdbdbd"/><rect x="78" y="58" width="54" height="72" fill="#bdbdbd"/><rect x="152" y="52" width="50" height="78" fill="#bdbdbd"/><rect x="218" y="68" width="30" height="62" fill="#bdbdbd"/><text x="130" y="34" font-family="Poppins" font-size="22" fill="#671314" text-anchor="middle" font-weight="800">C25/30</text><text x="130" y="50" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Fondations · Dallage · Voile</text></svg></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C25/30</div><div class="pcard-desc">Fondations superficielles, dallages, voiles de sous-sol. 25 MPa.</div><div class="pcard-tags"><span class="ptag">Fondation</span><span class="ptag">Dallage</span><span class="ptag">Voile</span></div><div class="pcard-footer"><div class="pcard-price">75 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" onclick="showPage('detail',null)">Détails →</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img">
+          <div class="pcard-badge">POPULAIRE</div>
+          <svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><rect x="10" y="122" width="240" height="30" rx="3" fill="#c2bcbc"/><rect x="18" y="28" width="22" height="114" fill="#bdbdbd"/><rect x="58" y="36" width="22" height="106" fill="#bdbdbd"/><rect x="98" y="31" width="22" height="111" fill="#bdbdbd"/><rect x="138" y="39" width="22" height="103" fill="#bdbdbd"/><rect x="178" y="34" width="22" height="108" fill="#bdbdbd"/><rect x="218" y="42" width="22" height="100" fill="#bdbdbd"/><rect x="10" y="70" width="240" height="10" fill="#a0a0a0" opacity="0.35"/><rect x="10" y="94" width="240" height="10" fill="#a0a0a0" opacity="0.25"/><text x="130" y="20" font-family="Poppins" font-size="20" fill="#671314" text-anchor="middle" font-weight="800">C30/37</text></svg>
+        </div>
+        <div class="pcard-body"><div class="pcard-title">Béton C30/37</div><div class="pcard-desc">Poteaux, poutres, dalles de plancher, structures porteuses. 30 MPa.</div><div class="pcard-tags"><span class="ptag">Poteau</span><span class="ptag">Poutre</span><span class="ptag">Dalle</span><span class="ptag">Structure</span></div><div class="pcard-footer"><div class="pcard-price">85 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" onclick="showPage('detail',null)">Détails →</button></div></div>
+      </div>
+      <div class="pcard" data-cat="bpe">
+        <div class="pcard-img"><svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><rect x="10" y="110" width="240" height="42" rx="3" fill="#c2bcbc"/><rect x="18" y="30" width="28" height="110" fill="#bdbdbd"/><rect x="64" y="24" width="28" height="116" fill="#bdbdbd"/><rect x="120" y="28" width="28" height="112" fill="#bdbdbd"/><rect x="176" y="36" width="28" height="104" fill="#bdbdbd"/><rect x="222" y="30" width="28" height="110" fill="#bdbdbd"/><rect x="10" y="64" width="240" height="12" fill="#878786" opacity="0.3"/><rect x="10" y="88" width="240" height="12" fill="#878786" opacity="0.2"/><text x="130" y="20" font-family="Poppins" font-size="20" fill="#671314" text-anchor="middle" font-weight="800">C35/45</text></svg></div>
+        <div class="pcard-body"><div class="pcard-title">Béton C35/45</div><div class="pcard-desc">Ouvrages d'art, ponts, structures à fortes contraintes. 35 MPa.</div><div class="pcard-tags"><span class="ptag">Ouvrage d'art</span><span class="ptag">Pont</span><span class="ptag">Haute résistance</span></div><div class="pcard-footer"><div class="pcard-price">98 000 <span>FCFA/m³</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" onclick="showPage('detail',null)">Détails →</button></div></div>
+      </div>
+      <div class="pcard" data-cat="mortier">
+        <div class="pcard-img"><svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><rect x="40" y="55" width="180" height="90" rx="5" fill="#d4cece"/><rect x="20" y="115" width="220" height="22" rx="2" fill="#bdbdbd"/><rect x="20" y="95" width="220" height="22" rx="2" fill="#c2bcbc"/><rect x="20" y="75" width="220" height="22" rx="2" fill="#bdbdbd"/><rect x="55" y="48" width="150" height="12" rx="2" fill="#a0a0a0" opacity="0.6"/><text x="130" y="36" font-family="Poppins" font-size="18" fill="#671314" text-anchor="middle" font-weight="700">Mortier M10</text></svg></div>
+        <div class="pcard-body"><div class="pcard-title">Mortier de maçonnerie M10</div><div class="pcard-desc">Montage de blocs, briques et enduits de façade. Sac 25 kg ou vrac.</div><div class="pcard-tags"><span class="ptag">Maçonnerie</span><span class="ptag">Enduit</span><span class="ptag">Sac 25kg</span></div><div class="pcard-footer"><div class="pcard-price">4 200 <span>FCFA/sac</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;">Commander</button></div></div>
+      </div>
+      <div class="pcard" data-cat="agregat">
+        <div class="pcard-img"><svg width="260" height="170" viewBox="0 0 260 170" fill="none"><rect width="260" height="170" fill="#f0efef"/><ellipse cx="65" cy="120" rx="28" ry="20" fill="#a0a0a0"/><ellipse cx="110" cy="130" rx="22" ry="16" fill="#bdbdbd"/><ellipse cx="155" cy="118" rx="30" ry="22" fill="#9a9a9a"/><ellipse cx="205" cy="128" rx="24" ry="18" fill="#b0b0b0"/><ellipse cx="245" cy="115" rx="18" ry="14" fill="#a8a8a8"/><ellipse cx="88" cy="98" rx="18" ry="14" fill="#b5b5b5"/><ellipse cx="178" cy="100" rx="22" ry="16" fill="#a0a0a0"/><text x="130" y="52" font-family="Poppins" font-size="18" fill="#671314" text-anchor="middle" font-weight="700">Gravillon 5/15</text><text x="130" y="68" font-family="Inter" font-size="10" fill="#878786" text-anchor="middle">Agrégat concassé calibré</text></svg></div>
+        <div class="pcard-body"><div class="pcard-title">Gravillon concassé 5/15</div><div class="pcard-desc">Agrégat calibré pour béton, drainage et travaux routiers. Par tonne.</div><div class="pcard-tags"><span class="ptag">Béton</span><span class="ptag">Drainage</span><span class="ptag">Voirie</span></div><div class="pcard-footer"><div class="pcard-price">28 000 <span>FCFA/t</span></div><button class="btn btn-primary" style="padding:6px 12px;font-size:12px;">Commander</button></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= PAGE: FICHE PRODUIT ======= -->
+<div id="page-detail" class="page">
+  <div class="breadcrumb-nav">Accueil / Produits / <span>Béton C30/37</span></div>
+  <div class="prod-detail">
+    <div>
+      <div class="prod-main-img">
+        <svg width="420" height="280" viewBox="0 0 420 280" fill="none">
+          <rect width="420" height="280" fill="#f0efef" rx="8"/>
+          <rect x="70" y="70" width="280" height="140" rx="5" fill="#d4cece"/>
+          <line x1="90" y1="90" x2="90" y2="190" stroke="#878786" stroke-width="3"/><line x1="130" y1="90" x2="130" y2="190" stroke="#878786" stroke-width="3"/><line x1="170" y1="90" x2="170" y2="190" stroke="#878786" stroke-width="3"/><line x1="210" y1="90" x2="210" y2="190" stroke="#878786" stroke-width="3"/><line x1="250" y1="90" x2="250" y2="190" stroke="#878786" stroke-width="3"/><line x1="290" y1="90" x2="290" y2="190" stroke="#878786" stroke-width="3"/><line x1="330" y1="90" x2="330" y2="190" stroke="#878786" stroke-width="3"/>
+          <line x1="70" y1="120" x2="350" y2="120" stroke="#636362" stroke-width="3"/><line x1="70" y1="150" x2="350" y2="150" stroke="#636362" stroke-width="3"/>
+          <rect x="70" y="130" width="280" height="80" fill="#bdbdbd" opacity="0.7"/>
+          <text x="210" y="248" font-family="Poppins" font-size="26" fill="#671314" text-anchor="middle" font-weight="800">C30/37</text>
+          <text x="210" y="268" font-family="Inter" font-size="12" fill="#636362" text-anchor="middle">Béton Prêt à l'Emploi — JCEM GROUPE TOGO</text>
+          <circle cx="365" cy="52" r="28" fill="rgba(103,19,20,0.09)" stroke="#671314" stroke-width="1.5"/>
+          <text x="365" y="48" font-family="Poppins" font-size="8" fill="#671314" text-anchor="middle" font-weight="700">CERTIFIÉ</text>
+          <text x="365" y="60" font-family="Poppins" font-size="8" fill="#671314" text-anchor="middle">NF EN 206</text>
+        </svg>
+      </div>
+      <div class="prod-thumbs">
+        <div class="prod-thumb active">C30</div>
+        <div class="prod-thumb">Camion</div>
+        <div class="prod-thumb">Chantier</div>
+        <div class="prod-thumb">TDS PDF</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">Produits / Bétons BPE / <span style="color:var(--red);">C30/37</span></div>
+      <h1 class="poppins" style="font-size:22px;font-weight:700;color:var(--black);margin-bottom:6px;">Béton C30/37 — Prêt à l'Emploi</h1>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="color:#f59e0b;font-size:13px;">★★★★★</span>
+        <span style="font-size:12px;color:var(--gray);">4.9 · 128 chantiers</span>
+        <span class="sbadge s-route" style="margin-left:auto;">En stock</span>
+      </div>
+      <div class="spec-grid">
+        <div class="spec-item"><div class="spec-lbl">Résistance</div><div class="spec-val">30 MPa</div></div>
+        <div class="spec-item"><div class="spec-lbl">Classe XC</div><div class="spec-val">XC2 / XC3</div></div>
+        <div class="spec-item"><div class="spec-lbl">Affaissement</div><div class="spec-val">S3 (100–150mm)</div></div>
+        <div class="spec-item"><div class="spec-lbl">Min commande</div><div class="spec-val">0,5 m³</div></div>
+        <div class="spec-item"><div class="spec-lbl">Délai livraison</div><div class="spec-val">24–48h</div></div>
+        <div class="spec-item"><div class="spec-lbl">Dmax granulat</div><div class="spec-val">20 mm</div></div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px;">
+        <div class="pcard-price" style="font-size:22px;">85 000 <span style="font-size:13px;">FCFA / m³</span></div>
+        <div style="font-size:11px;color:var(--gray);margin-top:2px;">Livraison incluse à Lomé pour ≥ 2 m³ · HT</div>
+      </div>
+      <div style="margin:14px 0 6px;font-size:12px;font-weight:600;color:var(--gray-200);">Volume souhaité (m³)</div>
+      <div class="qty-step">
+        <button onclick="chgQty(-0.5)">−</button>
+        <input type="number" id="det-qty" value="4" min="0.5" step="0.5" oninput="updDetTotal()">
+        <span style="font-size:13px;color:var(--gray);">m³</span>
+        <span style="margin-left:auto;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--red);" id="det-total">340 000 FCFA</span>
+      </div>
+      <div style="display:flex;gap:9px;margin-top:14px;">
+        <button class="btn btn-primary" style="flex:2;justify-content:center;padding:11px;" onclick="showPage('checkout',null)">Commander maintenant</button>
+        <button class="btn btn-secondary" style="flex:1;justify-content:center;" onclick="showPage('panier',null)">+ Panier</button>
+      </div>
+      <div style="margin-top:12px;padding:10px 13px;background:var(--bg);border-radius:7px;display:flex;align-items:center;gap:9px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#671314" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span style="font-size:12px;color:var(--gray-200);">Fiche technique (TDS) disponible en PDF</span>
+        <a href="#" style="margin-left:auto;font-size:12px;color:var(--red);font-weight:600;">Télécharger →</a>
+      </div>
+    </div>
+  </div>
+  <div class="tabs-nav">
+    <div class="tab active" onclick="switchTab(this,'desc')">Description</div>
+    <div class="tab" onclick="switchTab(this,'tds')">Fiche technique</div>
+    <div class="tab" onclick="switchTab(this,'livr')">Livraison</div>
+    <div class="tab" onclick="switchTab(this,'avis')">Avis (128)</div>
+  </div>
+  <div class="tabs-content">
+    <div class="tab-panel active" id="tab-desc">
+      <h3 class="poppins" style="font-size:15px;font-weight:600;margin-bottom:9px;">Description du produit</h3>
+      <p style="color:var(--gray-200);line-height:1.8;font-size:13px;margin-bottom:14px;">Le béton C30/37 est un béton structurel formulé selon la norme NF EN 206, garantissant une résistance à la compression de 30 MPa à 28 jours. Sa classe de consistance S3 permet une mise en place aisée dans tous types de coffrages.</p>
+      <h3 class="poppins" style="font-size:15px;font-weight:600;margin-bottom:9px;">Applications principales</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;color:var(--gray-200);">
+        <div style="display:flex;gap:7px;align-items:center;"><span style="color:var(--red);font-weight:700;">✓</span> Poteaux et poutres</div>
+        <div style="display:flex;gap:7px;align-items:center;"><span style="color:var(--red);font-weight:700;">✓</span> Dalles de plancher</div>
+        <div style="display:flex;gap:7px;align-items:center;"><span style="color:var(--red);font-weight:700;">✓</span> Escaliers et rampes</div>
+        <div style="display:flex;gap:7px;align-items:center;"><span style="color:var(--red);font-weight:700;">✓</span> Structures industrielles</div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-tds" style="display:none;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+        <div><h3 class="poppins" style="font-size:14px;font-weight:600;margin-bottom:10px;">Caractéristiques techniques</h3>
+          <table style="width:100%;font-size:12px;border-collapse:collapse;">
+            <tr><td style="padding:7px 0;border-bottom:1px solid var(--bg-2);color:var(--gray);">Résistance compression (28j)</td><td style="text-align:right;font-weight:600;border-bottom:1px solid var(--bg-2);">≥ 30 MPa</td></tr>
+            <tr><td style="padding:7px 0;border-bottom:1px solid var(--bg-2);color:var(--gray);">Classe d'exposition</td><td style="text-align:right;font-weight:600;border-bottom:1px solid var(--bg-2);">XC2 / XC3</td></tr>
+            <tr><td style="padding:7px 0;border-bottom:1px solid var(--bg-2);color:var(--gray);">Consistance</td><td style="text-align:right;font-weight:600;border-bottom:1px solid var(--bg-2);">S3 (100–150 mm)</td></tr>
+            <tr><td style="padding:7px 0;border-bottom:1px solid var(--bg-2);color:var(--gray);">Dmax granulat</td><td style="text-align:right;font-weight:600;border-bottom:1px solid var(--bg-2);">20 mm</td></tr>
+            <tr><td style="padding:7px 0;color:var(--gray);">Rapport E/C max</td><td style="text-align:right;font-weight:600;">0,50</td></tr>
+          </table>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+          <svg width="52" height="64" viewBox="0 0 52 64" fill="none"><rect x="3" y="3" width="46" height="58" rx="4" fill="#fff" stroke="#e5e3e3"/><rect x="12" y="18" width="28" height="4" rx="2" fill="#bdbdbd"/><rect x="12" y="26" width="28" height="4" rx="2" fill="#bdbdbd"/><rect x="12" y="34" width="18" height="4" rx="2" fill="#bdbdbd"/><rect x="6" y="44" width="40" height="12" rx="2" fill="#671314" opacity="0.14"/><text x="26" y="54" font-family="Poppins" font-size="7" fill="#671314" text-anchor="middle" font-weight="700">TDS PDF</text></svg>
+          <div style="text-align:center;"><div style="font-weight:600;font-size:13px;color:var(--black);">TDS — C30/37</div><div style="font-size:11px;color:var(--gray);">PDF · A4 · 420 Ko</div></div>
+          <a href="#" class="btn btn-outline-red" style="width:100%;justify-content:center;font-size:12px;">Télécharger la fiche</a>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-livr" style="display:none;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;font-size:12px;">
+        <div style="background:var(--bg);border-radius:8px;padding:14px;"><div style="font-weight:600;margin-bottom:5px;font-size:13px;">Zone de livraison</div><div style="color:var(--gray-200);line-height:1.7;">Lomé et périphérie (30 km). Au-delà : nous consulter pour tarif kilométrique.</div></div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;"><div style="font-weight:600;margin-bottom:5px;font-size:13px;">Délai</div><div style="color:var(--gray-200);line-height:1.7;">Commande avant 14h → livraison le lendemain matin. Créneau choisi lors de la commande.</div></div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;"><div style="font-weight:600;margin-bottom:5px;font-size:13px;">Frais de livraison</div><div style="color:var(--gray-200);line-height:1.7;">Inclus à Lomé pour toute commande ≥ 2 m³. Forfait 15 000 FCFA en dessous.</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-avis" style="display:none;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:var(--bg);border-radius:8px;padding:13px;"><div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-weight:600;font-size:13px;">Koffi A.</span><span style="color:#f59e0b;font-size:12px;">★★★★★</span></div><p style="font-size:12px;color:var(--gray-200);">Béton de très bonne qualité, livré à l'heure. Le chauffeur a pris la photo à la livraison, tout est bien documenté.</p></div>
+        <div style="background:var(--bg);border-radius:8px;padding:13px;"><div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-weight:600;font-size:13px;">Mme Adjoa T.</span><span style="color:#f59e0b;font-size:12px;">★★★★★</span></div><p style="font-size:12px;color:var(--gray-200);">Service rapide et professionnel. La commande en ligne est simple, le béton correspond parfaitement à nos spécifications.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= PAGE: PANIER ======= -->
+<div id="page-panier" class="page">
+  <div class="breadcrumb-nav">Accueil / <span>Panier</span></div>
+  <div class="cart-layout">
+    <div>
+      <div class="card-box">
+        <div class="card-box-hdr"><h2>Mon panier</h2><span style="font-size:12px;color:var(--gray);">3 articles</span></div>
+        <div class="cart-item">
+          <div class="cart-item-img"><svg width="68" height="48" viewBox="0 0 68 48" fill="none"><rect width="68" height="48" fill="#f0efef" rx="5"/><text x="34" y="30" font-family="Poppins" font-size="13" fill="#671314" text-anchor="middle" font-weight="700">C30</text></svg></div>
+          <div><div class="citem-name">Béton C30/37</div><div class="citem-sub">BPE · m³</div></div>
+          <div class="cart-qty"><button onclick="chgCart('q1',-0.5)">−</button><input type="number" id="q1" value="4" min="0.5" step="0.5" oninput="updCart()"><button onclick="chgCart('q1',0.5)">+</button></div>
+          <div class="citem-price" id="p1">340 000 FCFA</div>
+        </div>
+        <div class="cart-item">
+          <div class="cart-item-img"><svg width="68" height="48" viewBox="0 0 68 48" fill="none"><rect width="68" height="48" fill="#f0efef" rx="5"/><text x="34" y="30" font-family="Poppins" font-size="13" fill="#671314" text-anchor="middle" font-weight="700">C25</text></svg></div>
+          <div><div class="citem-name">Béton C25/30</div><div class="citem-sub">BPE · m³</div></div>
+          <div class="cart-qty"><button onclick="chgCart('q2',-0.5)">−</button><input type="number" id="q2" value="2" min="0.5" step="0.5" oninput="updCart()"><button onclick="chgCart('q2',0.5)">+</button></div>
+          <div class="citem-price" id="p2">150 000 FCFA</div>
+        </div>
+        <div class="cart-item">
+          <div class="cart-item-img"><svg width="68" height="48" viewBox="0 0 68 48" fill="none"><rect width="68" height="48" fill="#f0efef" rx="5"/><text x="34" y="30" font-family="Poppins" font-size="11" fill="#671314" text-anchor="middle" font-weight="700">M10</text></svg></div>
+          <div><div class="citem-name">Mortier M10</div><div class="citem-sub">Sac 25 kg</div></div>
+          <div class="cart-qty"><button onclick="chgCart('q3',-1)">−</button><input type="number" id="q3" value="20" min="1" step="1" oninput="updCart()"><button onclick="chgCart('q3',1)">+</button></div>
+          <div class="citem-price" id="p3">84 000 FCFA</div>
+        </div>
+      </div>
+      <div class="card-box" style="margin-top:14px;">
+        <div class="card-box-hdr"><h3>Adresse de livraison</h3></div>
+        <div style="padding:16px 18px;">
+          <div class="form-row"><div class="fld"><label>Nom / Entreprise</label><input type="text" placeholder="Ex: Chantier Adjoa Koffi"></div><div class="fld"><label>Téléphone</label><input type="tel" placeholder="+228 90 00 00 00"></div></div>
+          <div class="fld"><label>Adresse du chantier</label><input type="text" placeholder="Quartier, rue, point de repère — Lomé"></div>
+          <div class="fld" style="margin-bottom:0;"><label>Instructions livraison</label><input type="text" placeholder="Ex: Appeler 30 min avant, accès par le portail nord"></div>
+        </div>
+      </div>
+      <div class="card-box" style="margin-top:14px;">
+        <div class="card-box-hdr"><h3>Créneau de livraison</h3><span style="font-size:11px;color:var(--gray);">Jeudi 19 juin 2025</span></div>
+        <div style="padding:14px 18px;">
+          <div class="slot-grid">
+            <div class="slot selected">7h00 – 9h00</div>
+            <div class="slot">9h00 – 11h00</div>
+            <div class="slot">11h00 – 13h00</div>
+            <div class="slot full">13h–15h — Complet</div>
+            <div class="slot">15h00 – 17h00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-box">
+      <h3>Récapitulatif</h3>
+      <div class="sum-line"><span>C30/37 × 4 m³</span><span id="s1">340 000</span></div>
+      <div class="sum-line"><span>C25/30 × 2 m³</span><span id="s2">150 000</span></div>
+      <div class="sum-line"><span>Mortier M10 × 20</span><span id="s3">84 000</span></div>
+      <div class="sum-line" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bg-2);"><span>Sous-total</span><span id="subtot">574 000</span></div>
+      <div class="sum-line"><span>Livraison</span><span style="color:#16a34a;font-weight:600;">Incluse</span></div>
+      <div class="sum-total"><span>Total HT</span><span id="tot-ht">574 000 FCFA</span></div>
+      <button class="btn btn-primary w-full" style="padding:11px;margin-top:14px;" onclick="showPage('checkout',null)">Passer la commande →</button>
+      <p style="font-size:10px;color:var(--gray);text-align:center;margin-top:8px;">T-Money · Flooz · Virement · Espèces</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= PAGE: CHECKOUT ======= -->
+<div id="page-checkout" class="page">
+  <div class="breadcrumb-nav">Accueil / Panier / <span>Finaliser la commande</span></div>
+  <div class="checkout-layout">
+    <div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">1</div><h3>Vos coordonnées</h3></div>
+        <div class="cblock-body">
+          <div class="form-row"><div class="fld"><label>Prénom</label><input type="text" placeholder="Jean-Claude"></div><div class="fld"><label>Nom</label><input type="text" placeholder="Mensah"></div></div>
+          <div class="form-row"><div class="fld"><label>Téléphone</label><input type="tel" placeholder="+228 90 00 00 00"></div><div class="fld"><label>Email</label><input type="email" placeholder="jean@example.com"></div></div>
+          <div class="fld" style="margin-bottom:0;"><label>Entreprise (optionnel)</label><input type="text" placeholder="Nom de l'entreprise ou du chantier"></div>
+        </div>
+      </div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">2</div><h3>Adresse et créneau de livraison</h3></div>
+        <div class="cblock-body">
+          <div class="fld"><label>Adresse du chantier</label><input type="text" placeholder="Quartier, rue, repère — Lomé"></div>
+          <div class="fld"><label>Instructions particulières</label><textarea style="height:60px;resize:none;" placeholder="Accès, contact sur place, commentaires..."></textarea></div>
+          <div style="font-size:10px;font-weight:600;color:var(--gray-200);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Créneau souhaité — Jeudi 19 juin</div>
+          <div class="slot-grid">
+            <div class="slot selected">7h00 – 9h00</div>
+            <div class="slot">9h00 – 11h00</div>
+            <div class="slot">11h00 – 13h00</div>
+            <div class="slot full">13h–15h — Complet</div>
+            <div class="slot">15h00 – 17h00</div>
+          </div>
+        </div>
+      </div>
+      <div class="cblock">
+        <div class="cblock-hdr"><div class="cstep-num">3</div><h3>Mode de paiement</h3></div>
+        <div class="cblock-body">
+          <div class="pay-opts">
+            <div class="pay-opt selected" onclick="selPay(this)"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13" fill="#fef3c7"/><text x="15" y="20" font-family="Poppins" font-size="10" fill="#b45309" text-anchor="middle" font-weight="700">TM</text></svg><div class="pay-opt-lbl">T-Money</div></div>
+            <div class="pay-opt" onclick="selPay(this)"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13" fill="#dbeafe"/><text x="15" y="20" font-family="Poppins" font-size="10" fill="#1d4ed8" text-anchor="middle" font-weight="700">FL</text></svg><div class="pay-opt-lbl">Flooz</div></div>
+            <div class="pay-opt" onclick="selPay(this)"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13" fill="#dcfce7"/><rect x="6" y="9" width="18" height="12" rx="1.5" stroke="#16a34a" stroke-width="1.5" fill="none"/><line x1="6" y1="14" x2="24" y2="14" stroke="#16a34a" stroke-width="1.5"/></svg><div class="pay-opt-lbl">Virement</div></div>
+            <div class="pay-opt" onclick="selPay(this)"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13" fill="#f3f4f6"/><rect x="7" y="8" width="16" height="14" rx="1.5" stroke="#374151" stroke-width="1.5" fill="none"/><path d="M11 8V6a4 4 0 018 0v2" stroke="#374151" stroke-width="1.5" fill="none"/></svg><div class="pay-opt-lbl">Espèces</div></div>
+          </div>
+          <div style="margin-top:12px;padding:10px 12px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--gray-200);"><strong style="color:var(--black);">T-Money</strong> — Vous recevrez un push USSD sur votre téléphone pour confirmer le paiement.</div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-box">
+      <h3>Votre commande</h3>
+      <div class="sum-line"><span>C30/37 × 4 m³</span><span>340 000</span></div>
+      <div class="sum-line"><span>C25/30 × 2 m³</span><span>150 000</span></div>
+      <div class="sum-line"><span>Mortier M10 × 20</span><span>84 000</span></div>
+      <div class="sum-line" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bg-2);"><span>Sous-total</span><span>574 000</span></div>
+      <div class="sum-line"><span>Livraison</span><span style="color:#16a34a;font-weight:600;">Incluse</span></div>
+      <div class="sum-total"><span>Total HT</span><span>574 000 FCFA</span></div>
+      <div style="margin:12px 0;padding:10px 12px;background:var(--red-light);border-radius:6px;border-left:3px solid var(--red);">
+        <div style="font-size:11px;font-weight:600;color:var(--red);margin-bottom:2px;">Livraison programmée</div>
+        <div style="font-size:11px;color:var(--gray-200);">Jeu. 19 juin · 7h00 – 9h00</div>
+      </div>
+      <button class="btn btn-primary w-full" style="padding:12px;font-size:14px;" onclick="showPage('confirmation',null)">Confirmer la commande →</button>
+      <p style="font-size:10px;color:var(--gray);text-align:center;margin-top:8px;">Notification SMS + WhatsApp + Email</p>
+    </div>
+  </div>
+</div>
+<!-- ======= PAGE: CONFIRMATION + POD ======= -->
+<div id="page-confirmation" class="page">
+  <div class="confirm-wrap">
+    <div class="confirm-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h1>Commande confirmée !</h1>
+    <p>Votre commande <strong>#JCM-2025-0847</strong> a bien été enregistrée. Vous recevrez une confirmation sous peu.</p>
+    <div class="confirm-detail">
+      <div class="pod-row"><span class="lbl">Numéro commande</span><span class="val">#JCM-2025-0847</span></div>
+      <div class="pod-row"><span class="lbl">Produit principal</span><span class="val">Béton C30/37 — 4 m³</span></div>
+      <div class="pod-row"><span class="lbl">Livraison prévue</span><span class="val">Jeu. 19 juin · 7h00 – 9h00</span></div>
+      <div class="pod-row"><span class="lbl">Paiement</span><span class="val">T-Money — En attente</span></div>
+      <div class="pod-row"><span class="lbl">Total</span><span class="val" style="color:var(--red);">574 000 FCFA</span></div>
+    </div>
+    <div class="notif-row">
+      <div class="notif-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#671314" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/><path d="M2 6.93A19.79 19.79 0 0112 2a19.79 19.79 0 0110 4.93"/></svg>SMS envoyé</div>
+      <div class="notif-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8A8.5 8.5 0 013 21l1.9-5.7a8.38 8.38 0 01-.9-3.8"/></svg>WhatsApp</div>
+      <div class="notif-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;">
+      <button class="btn btn-primary" onclick="showPage('admin',null)">Voir dans l'admin →</button>
+      <button class="btn btn-secondary" onclick="showPage('home',null)">Retour à l'accueil</button>
+    </div>
+  </div>
+
+  <!-- POD CARD -->
+  <div style="max-width:620px;margin:0 auto 56px;padding:0 24px;">
+    <h2 class="poppins" style="font-size:17px;font-weight:700;margin-bottom:14px;color:var(--black);">Preuve de livraison (POD)</h2>
+    <div class="pod-card">
+      <div class="pod-hdr">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <h2>Livraison #JCM-2025-0847</h2>
+        <div class="pod-status">LIVRÉ</div>
+      </div>
+      <div class="pod-body">
+        <div class="pod-row"><span class="lbl">Date / Heure</span><span class="val">Jeu. 19 juin 2025 · 07h42</span></div>
+        <div class="pod-row"><span class="lbl">Chauffeur</span><span class="val">Koami AGBESSI · BPE-04</span></div>
+        <div class="pod-row"><span class="lbl">Quantité livrée</span><span class="val">4 m³ C30/37 + 2 m³ C25/30</span></div>
+        <div style="margin:14px 0 7px;font-size:11px;font-weight:600;color:var(--gray-200);text-transform:uppercase;letter-spacing:.5px;">Photos de livraison</div>
+        <div class="pod-photos">
+          <div class="pod-photo">
+            <svg width="140" height="110" viewBox="0 0 140 110" fill="none"><rect width="140" height="110" fill="#f0efef" rx="5"/><rect x="10" y="55" width="120" height="40" rx="3" fill="#d4cece"/><rect x="20" y="40" width="100" height="30" rx="3" fill="#2a2627"/><circle cx="35" cy="98" r="10" fill="#636362"/><circle cx="35" cy="98" r="5" fill="#bdbdbd"/><circle cx="105" cy="98" r="10" fill="#636362"/><circle cx="105" cy="98" r="5" fill="#bdbdbd"/><text x="70" y="22" font-family="Inter" font-size="9" fill="#878786" text-anchor="middle">Photo arrivée camion</text></svg>
+          </div>
+          <div class="pod-photo">
+            <svg width="140" height="110" viewBox="0 0 140 110" fill="none"><rect width="140" height="110" fill="#f0efef" rx="5"/><rect x="10" y="60" width="120" height="35" rx="3" fill="#d4cece"/><ellipse cx="70" cy="62" rx="52" ry="14" fill="#bdbdbd"/><text x="70" y="35" font-family="Inter" font-size="9" fill="#878786" text-anchor="middle">Photo béton coulé</text><text x="70" y="90" font-family="Poppins" font-size="9" fill="#671314" text-anchor="middle" font-weight="700">4 m³ C30/37</text></svg>
+          </div>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:var(--gray-200);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;">Signature client</div>
+        <div class="pod-sig">
+          <svg width="180" height="55" viewBox="0 0 180 55" fill="none"><path d="M18 38 Q35 8 52 32 Q72 52 90 24 Q108 4 128 28 Q144 42 162 32" stroke="#2a2627" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div style="display:flex;gap:9px;margin-top:11px;">
+          <button class="btn btn-primary" style="flex:1;justify-content:center;font-size:12px;">📄 Générer facture PDF</button>
+          <button class="btn btn-secondary" style="flex:1;justify-content:center;font-size:12px;">Partager POD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= PAGE: ADMIN ======= -->
+<div id="page-admin" class="page">
+  <div class="admin-layout">
+    <div class="admin-sb">
+      <div class="admin-sb-logo">
+        <div class="logo-txt poppins"><span>JCEM</span> ADMIN</div>
+        <div class="logo-sub">BACK-OFFICE</div>
+      </div>
+      <div class="anav-section">Principal</div>
+      <div class="anav-item active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+        Commandes
+      </div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Livraisons / POD
+      </div>
+      <div class="anav-section">Production</div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2"/></svg>
+        Planning
+      </div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg>
+        Camions
+      </div>
+      <div class="anav-section">Finances</div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Facturation
+      </div>
+      <div class="anav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Statistiques
+      </div>
+    </div>
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>Dashboard production</h1>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:12px;color:var(--gray);">Jeu. 19 juin 2025</span>
+          <button class="btn btn-primary" style="padding:7px 14px;font-size:12px;">+ Nouvelle commande</button>
+        </div>
+      </div>
+      <div class="admin-content">
+        <!-- STAT CARDS -->
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-lbl">Commandes aujourd'hui</div><div class="stat-val">18</div><div class="stat-chg">↑ +3 vs hier</div></div>
+          <div class="stat-card"><div class="stat-lbl">Volume prod. (m³)</div><div class="stat-val red">124</div><div class="stat-chg" style="color:var(--red);">sur 150 m³ capacité</div></div>
+          <div class="stat-card"><div class="stat-lbl">Livraisons en route</div><div class="stat-val">7</div><div class="stat-chg">4 camions actifs</div></div>
+          <div class="stat-card"><div class="stat-lbl">CA journalier</div><div class="stat-val">10,5 M</div><div class="stat-chg">FCFA HT</div></div>
+        </div>
+
+        <!-- CAPACITE PRODUCTION -->
+        <div class="admin-card">
+          <div class="admin-card-hdr">
+            <div class="admin-card-title">Capacité production — Aujourd'hui</div>
+            <span style="font-size:13px;color:var(--red);font-weight:600;">124 / 150 m³ · 82,6%</span>
+          </div>
+          <div style="padding:14px 18px;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
+              <div><div style="font-size:11px;color:var(--gray);margin-bottom:5px;">C20/25</div><div class="cap-bar"><div class="cap-fill" style="width:60%;background:#b45309;"></div></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">30 / 50 m³</div></div>
+              <div><div style="font-size:11px;color:var(--gray);margin-bottom:5px;">C25/30</div><div class="cap-bar"><div class="cap-fill" style="width:74%;background:var(--red);"></div></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">37 / 50 m³</div></div>
+              <div><div style="font-size:11px;color:var(--gray);margin-bottom:5px;">C30/37</div><div class="cap-bar"><div class="cap-fill" style="width:94%;background:#dc2626;"></div></div><div style="font-size:10px;color:var(--gray);margin-top:3px;">47 / 50 m³ — <span style="color:#dc2626;font-weight:600;">Presque plein</span></div></div>
+            </div>
+            <div class="cap-bar" style="height:12px;"><div class="cap-fill" style="width:82.6%;background:var(--red);"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray);margin-top:3px;"><span>0 m³</span><span style="color:var(--red);font-weight:600;">82,6% utilisé</span><span>150 m³</span></div>
+          </div>
+        </div>
+
+        <!-- COMMANDES -->
+        <div class="admin-card">
+          <div class="admin-card-hdr"><div class="admin-card-title">Commandes récentes</div><a href="#" style="font-size:12px;color:var(--red);">Voir tout →</a></div>
+          <table class="atable">
+            <thead><tr><th>#</th><th>Client</th><th>Produit</th><th>Vol.</th><th>Créneau</th><th>Paiement</th><th>Statut</th><th>POD</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;color:var(--red);">0847</td><td>Jean-Claude M.</td><td>C30/37 + C25/30</td><td>6 m³</td><td>07h–09h</td><td>T-Money</td><td><span class="sbadge s-livre">Livré</span></td><td><a href="#" style="color:var(--red);font-size:11px;" onclick="showPage('confirmation',null)">Voir POD</a></td></tr>
+              <tr><td style="font-weight:600;color:var(--red);">0846</td><td>Adjoa TEVI</td><td>C30/37</td><td>4 m³</td><td>09h–11h</td><td>Flooz</td><td><span class="sbadge s-route">En route</span></td><td><span style="color:var(--gray);font-size:11px;">En attente</span></td></tr>
+              <tr><td style="font-weight:600;color:var(--red);">0845</td><td>BÂTIR TOGO SA</td><td>C25/30</td><td>12 m³</td><td>11h–13h</td><td>Virement</td><td><span class="sbadge s-prod">En production</span></td><td>—</td></tr>
+              <tr><td style="font-weight:600;color:var(--red);">0844</td><td>Kofi AGBA</td><td>C20/25</td><td>2 m³</td><td>15h–17h</td><td>Espèces</td><td><span class="sbadge s-recue">Reçue</span></td><td>—</td></tr>
+              <tr><td style="font-weight:600;color:var(--red);">0843</td><td>M. Lawson P.</td><td>C35/45</td><td>8 m³</td><td>07h–09h</td><td>Virement</td><td><span class="sbadge s-livre">Livré</span></td><td><a href="#" style="color:var(--red);font-size:11px;">Voir POD</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PLANNING CAMIONS -->
+        <div class="admin-card">
+          <div class="admin-card-hdr"><div class="admin-card-title">Planning camions — Aujourd'hui</div></div>
+          <div style="padding:14px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+            <div style="border:1px solid var(--border);border-radius:8px;padding:12px;"><div style="font-weight:600;font-size:13px;margin-bottom:4px;">BPE-01</div><div class="sbadge s-route" style="margin-bottom:7px;">En route</div><div style="font-size:11px;color:var(--gray);">Cmd #0846 · 4 m³</div><div style="font-size:10px;color:var(--gray-200);margin-top:3px;">GPS: Tokoin · ETA 11h30</div></div>
+            <div style="border:1px solid var(--border);border-radius:8px;padding:12px;"><div style="font-weight:600;font-size:13px;margin-bottom:4px;">BPE-02</div><div class="sbadge s-prod" style="margin-bottom:7px;">Chargement</div><div style="font-size:11px;color:var(--gray);">Cmd #0845 · 12 m³</div><div style="font-size:10px;color:var(--gray-200);margin-top:3px;">Départ prévu : 10h45</div></div>
+            <div style="border:1px solid var(--border);border-radius:8px;padding:12px;"><div style="font-weight:600;font-size:13px;margin-bottom:4px;">BPE-03</div><div class="sbadge s-recue" style="margin-bottom:7px;">Disponible</div><div style="font-size:11px;color:var(--gray);">Prochain: #0844</div><div style="font-size:10px;color:var(--gray-200);margin-top:3px;">Départ prévu : 14h30</div></div>
+            <div style="border:1px solid var(--border);border-radius:8px;padding:12px;"><div style="font-weight:600;font-size:13px;margin-bottom:4px;">BPE-04</div><div class="sbadge s-livre" style="margin-bottom:7px;">Retour centrale</div><div style="font-size:11px;color:var(--gray);">Livraison #0847 ✓</div><div style="font-size:10px;color:var(--gray-200);margin-top:3px;">Retour : 12h00</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SCRIPTS ======= -->
+<script>
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById('page-' + id);
+  if (pg) { pg.classList.add('active'); window.scrollTo(0,0); }
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+function calcVol() {
+  const l = parseFloat(document.getElementById('c-l').value)||0;
+  const w = parseFloat(document.getElementById('c-w').value)||0;
+  const h = parseFloat(document.getElementById('c-h').value)||0;
+  const price = parseInt(document.getElementById('c-type').value)||85000;
+  const vol = l*w*h;
+  document.getElementById('c-vol').textContent = vol.toFixed(2)+' m³';
+  document.getElementById('c-price').textContent = Math.round(vol*price).toLocaleString('fr-FR')+' FCFA';
+}
+function chgQty(d) {
+  const inp = document.getElementById('det-qty');
+  let v = parseFloat(inp.value)+d;
+  if(v<0.5) v=0.5;
+  inp.value = v.toFixed(1);
+  updDetTotal();
+}
+function updDetTotal() {
+  const v = parseFloat(document.getElementById('det-qty').value)||0;
+  document.getElementById('det-total').textContent = Math.round(v*85000).toLocaleString('fr-FR')+' FCFA';
+}
+function chgCart(id, d) {
+  const inp = document.getElementById(id);
+  let v = parseFloat(inp.value)+d;
+  if(v<(id==='q3'?1:0.5)) v=(id==='q3'?1:0.5);
+  inp.value=v; updCart();
+}
+function updCart() {
+  const q1=parseFloat(document.getElementById('q1').value)||0;
+  const q2=parseFloat(document.getElementById('q2').value)||0;
+  const q3=parseFloat(document.getElementById('q3').value)||0;
+  const p1=Math.round(q1*85000), p2=Math.round(q2*75000), p3=Math.round(q3*4200);
+  const sub=p1+p2+p3;
+  const fmt = n => n.toLocaleString('fr-FR');
+  document.getElementById('p1').textContent=fmt(p1)+' FCFA';
+  document.getElementById('p2').textContent=fmt(p2)+' FCFA';
+  document.getElementById('p3').textContent=fmt(p3)+' FCFA';
+  document.getElementById('s1').textContent=fmt(p1);
+  document.getElementById('s2').textContent=fmt(p2);
+  document.getElementById('s3').textContent=fmt(p3);
+  document.getElementById('subtot').textContent=fmt(sub);
+  document.getElementById('tot-ht').textContent=fmt(sub)+' FCFA';
+}
+function selPay(el) {
+  document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function filterProd(cat, el) {
+  document.querySelectorAll('.page-tabs-inner .ptab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#prod-grid .pcard').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+function switchTab(el, id) {
+  document.querySelectorAll('.tabs-nav .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  const panel=document.getElementById('tab-'+id);
+  if(panel){panel.classList.add('active');panel.style.display='block';}
+}
+document.querySelectorAll('.slot:not(.full)').forEach(s=>{
+  s.onclick=()=>{
+    s.closest('.slot-grid').querySelectorAll('.slot').forEach(x=>x.classList.remove('selected'));
+    s.classList.add('selected');
+  };
+});
+</script>
+</body>
+</html>

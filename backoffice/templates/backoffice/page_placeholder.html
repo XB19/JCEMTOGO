@@ -1,0 +1,17 @@
+{% extends 'backoffice/base.html' %}
+{% block title %}{{ title }} — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>{{ title }}</h1>
+    <span class="topbar-date">{% now "D d M Y" %}</span>
+  </div>
+  <div class="admin-content">
+    <div class="admin-card">
+      <div class="empty-state">
+        <div class="empty-state-icon">🚧</div>
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

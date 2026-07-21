@@ -1,0 +1,42 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Statistiques — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Statistiques</h1>
+    <span class="topbar-date">{% now "D d M Y" %}</span>
+  </div>
+  <div class="admin-content">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="stat-lbl">Commandes totales</div><div class="stat-val">{{ total_orders }}</div><div class="stat-chg">Depuis le lancement</div></div>
+      <div class="stat-card"><div class="stat-lbl">CA total</div><div class="stat-val red">{{ total_revenue|intcomma }} FCFA</div><div class="stat-chg" style="color:var(--red);">Toutes commandes</div></div>
+      <div class="stat-card"><div class="stat-lbl">Panier moyen</div><div class="stat-val">{{ avg_order|intcomma }} FCFA</div><div class="stat-chg">Par commande</div></div>
+    </div>
+    <div class="section-grid">
+      <div class="admin-card">
+        <div class="admin-card-hdr"><div class="admin-card-title">Répartition par statut</div></div>
+        <div class="bar-list">
+          {% for item in status_breakdown %}
+          <div class="bar-row">
+            <span class="bar-label">{{ item.label }}</span>
+            <div class="bar-track"><div class="bar-fill s-{{ item.value }}" style="width:{% widthratio item.count total_orders 100 %}%;"></div></div>
+            <span class="bar-count">{{ item.count }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card-hdr"><div class="admin-card-title">Répartition par moyen de paiement</div></div>
+        <div class="bar-list">
+          {% for item in payment_breakdown %}
+          <div class="bar-row">
+            <span class="bar-label">{{ item.label }}</span>
+            <div class="bar-track"><div class="bar-fill bar-fill-red" style="width:{% widthratio item.count total_orders 100 %}%;"></div></div>
+            <span class="bar-count">{{ item.count }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

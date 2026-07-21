@@ -1,0 +1,50 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Planning — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Planning</h1>
+    <span class="topbar-date">{% now "D d M Y" %}</span>
+  </div>
+  <div class="admin-content">
+    <div class="page-header-card">
+      <div>
+        <h2>Organisation des tournées</h2>
+        <p>Commandes actives (hors livrées et annulées), regroupées par créneau de livraison choisi par le client.</p>
+      </div>
+    </div>
+    {% if slots %}
+      {% for slot, slot_orders in slots.items %}
+      <div class="admin-card" style="margin-bottom:18px;">
+        <div class="admin-card-hdr">
+          <div class="admin-card-title">{{ slot }}</div>
+          <span class="status-pill">{{ slot_orders|length }} commande{{ slot_orders|length|pluralize }}</span>
+        </div>
+        <div class="atable-wrap">
+        <table class="atable">
+          <thead><tr><th>#</th><th>Client</th><th>Adresse</th><th>Statut</th><th>Action</th></tr></thead>
+          <tbody>
+            {% for order in slot_orders %}
+            <tr>
+              <td style="font-weight:600;color:var(--red);">{{ order.order_reference }}</td>
+              <td>{{ order.first_name }} {{ order.last_name }}</td>
+              <td>{{ order.address|truncatechars:40 }}</td>
+              <td><span class="sbadge {% if order.status == 'delivering' %}s-route{% elif order.status == 'confirmed' %}s-prod{% elif order.status == 'pending' %}s-recue{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+              <td>{% include 'backoffice/_status_form.html' with order=order status_choices=status_choices %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="admin-card">
+        <div class="page-card" style="border:none;box-shadow:none;">
+          <h3>Aucune tournée à planifier</h3>
+          <p>Dès qu'une commande sera passée, elle apparaîtra ici classée par créneau de livraison.</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

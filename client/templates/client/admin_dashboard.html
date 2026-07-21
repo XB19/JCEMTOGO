@@ -1,0 +1,68 @@
+{% load static humanize %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin JCEM — Back-office</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sb">
+      <div class="admin-sb-logo">
+        <div class="logo-txt poppins"><span>JCEM</span> ADMIN</div>
+        <div class="logo-sub">BACK-OFFICE</div>
+      </div>
+      <div class="anav-section">Principal</div>
+      <div class="anav-item active">Dashboard</div>
+      <div class="anav-item">Commandes</div>
+      <div class="anav-item">Livraisons / POD</div>
+      <div class="anav-section">Production</div>
+      <div class="anav-item">Planning</div>
+      <div class="anav-item">Camions</div>
+      <div class="anav-section">Finances</div>
+      <div class="anav-item">Facturation</div>
+      <div class="anav-item">Statistiques</div>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Dashboard production</h1>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:12px;color:var(--gray);">{% now "D d M Y" %}</span>
+          <button class="btn btn-primary" style="padding:7px 14px;font-size:12px;">+ Nouvelle commande</button>
+        </div>
+      </div>
+      <div class="admin-content">
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-lbl">Commandes récentes</div><div class="stat-val">{{ stats.today_orders }}</div><div class="stat-chg">Dernières 5 commandes</div></div>
+          <div class="stat-card"><div class="stat-lbl">CA estimé</div><div class="stat-val red">{{ stats.total_revenue|intcomma }} FCFA</div><div class="stat-chg" style="color:var(--red);">Basé sur 5 dernières commandes</div></div>
+          <div class="stat-card"><div class="stat-lbl">Livraisons en route</div><div class="stat-val">{{ stats.in_route }}</div><div class="stat-chg">Camions actifs</div></div>
+          <div class="stat-card"><div class="stat-lbl">Livrées</div><div class="stat-val">{{ stats.delivered }}</div><div class="stat-chg">Commandes clôturées</div></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-hdr"><div class="admin-card-title">Commandes récentes</div><a href="#" style="font-size:12px;color:var(--red);">Voir tout →</a></div>
+          <table class="atable">
+            <thead><tr><th>#</th><th>Client</th><th>Produits</th><th>Total</th><th>Livraison</th><th>Paiement</th><th>Statut</th></tr></thead>
+            <tbody>
+              {% for order in orders %}
+              <tr>
+                <td style="font-weight:600;color:var(--red);">{{ order.order_reference }}</td>
+                <td>{{ order.first_name }} {{ order.last_name }}</td>
+                <td>{{ order.products|length }} item(s)</td>
+                <td>{{ order.total_amount|intcomma }} FCFA</td>
+                <td>{{ order.delivery_slot }}</td>
+                <td>{{ order.get_payment_method_display }}</td>
+                <td><span class="sbadge {% if order.status == 'delivered' %}s-livre{% elif order.status == 'delivering' %}s-route{% elif order.status == 'confirmed' %}s-prod{% elif order.status == 'pending' %}s-recue{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'backoffice/base.html' %}
+{% load humanize %}
+{% block title %}Livraisons / POD — Back-office JCEM{% endblock %}
+{% block content %}
+  <div class="admin-topbar">
+    <h1>Livraisons / POD</h1>
+    <span class="topbar-date">{% now "D d M Y" %}</span>
+  </div>
+  <div class="admin-content">
+    <div class="page-header-card">
+      <div>
+        <h2>Suivi des livraisons</h2>
+        <p>Commandes confirmées jusqu'à livrées. Change le statut directement depuis le tableau au fur et à mesure de la production et de la livraison.</p>
+      </div>
+      <div class="status-summary">
+        <div class="status-pill">Confirmées: {{ stats.confirmed }}</div>
+        <div class="status-pill">En préparation: {{ stats.preparing }}</div>
+        <div class="status-pill">En livraison: {{ stats.delivering }}</div>
+        <div class="status-pill">Livrées: {{ stats.delivered }}</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card-hdr"><div class="admin-card-title">Commandes en cours de traitement</div></div>
+      <div class="atable-wrap">
+      <table class="atable">
+        <thead><tr><th>#</th><th>Client</th><th>Adresse</th><th>Créneau</th><th>Statut</th><th>Action</th></tr></thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td style="font-weight:600;color:var(--red);">{{ order.order_reference }}</td>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+            <td>{{ order.address|truncatechars:40 }}</td>
+            <td>{{ order.delivery_slot }}</td>
+            <td><span class="sbadge {% if order.status == 'delivered' %}s-livre{% elif order.status == 'delivering' %}s-route{% else %}s-prod{% endif %}">{{ order.get_status_display }}</span></td>
+            <td>{% include 'backoffice/_status_form.html' %}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="6" style="padding:16px;color:var(--gray);text-align:center;">Aucune commande en cours de livraison. Les commandes confirmées apparaîtront ici.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
