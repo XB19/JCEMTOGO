@@ -6,43 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bons Plans & ZenCard — JCEM GROUPE TOGO</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=3" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=4" />
   <link rel="stylesheet" href="{% static 'client/css/bon_plan.css' %}?v=2" />
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="nav-logo nav-logo-link" href="{% url 'client:home' %}">
-      <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
-    </a>
-    <div class="nav-links">
-      <a href="{% url 'client:home' %}">Accueil</a>
-      <a href="{% url 'client:home' %}">Produits</a>
-      <a href="{% url 'client:home' %}">Fiche produit</a>
-      <a href="{% url 'client:home' %}">Panier</a>
-      <a href="{% url 'client:home' %}">Commander</a>
-      <a class="active" href="{% url 'client:bon_plan' %}">Bons Plans</a>
-    </div>
-    <div class="nav-actions">
-      <span>+228 90 30 55 88</span>
-      <a class="btn btn-primary" href="{% url 'client:home' %}">Commander</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ANNIVERSAIRE -->
-
-<div class="anniv-banner">
-  <div class="sec-in">
-    <div class="anniv-inner">
-      <div class="anniv-badge">20 ANS</div>
-      <div class="anniv-text">
-        Kapi Consult célèbre ses <strong>20 ans d'excellence</strong> au service des organisations.
-      </div>
-    </div>
-  </div>
-</div>
+{% include 'client/partials/_nav.html' with active='bon_plan' %}
 
 <!-- HERO -->
 
@@ -169,49 +138,9 @@
 
 <!-- FOOTER -->
 
-<footer class="footer">
-  <div class="footer-main">
-    <div>
-      <div class="footer-logo-box">
-        <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="footer-logo-img">
-      </div>
-      <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Produits</h4>
-      <a href="{% url 'client:home' %}">Béton C20/25</a>
-      <a href="{% url 'client:home' %}">Béton C25/30</a>
-      <a href="{% url 'client:home' %}">Béton C30/37</a>
-      <a href="{% url 'client:home' %}">Béton C35/45</a>
-      <a href="{% url 'client:home' %}">Mortier prêt</a>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="{% url 'client:home' %}">Livraison chantier</a>
-      <a href="{% url 'client:home' %}">Calcul de volume</a>
-      <a href="{% url 'client:bon_plan' %}">Bons Plans & ZenCard</a>
-      <a href="{% url 'client:home' %}">Suivi commande</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>+228 90 30 55 88</p>
-      <p>contact@jcemgroupe.tg</p>
-      <p>Lomé, Togo</p>
-      <p>Lun–Sam : 7h – 18h</p>
-      <div class="footer-payment-badges">
-        <span class="footer-pay-badge">Mixx by Yas</span>
-        <span class="footer-pay-badge">Flooz</span>
-        <span class="footer-pay-badge">Carte bancaire</span>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p>
-    <p>Béton prêt à l'emploi · Lomé · Togo</p>
-  </div>
-</footer>
+{% include 'client/partials/_footer.html' %}
 
-<script src="{% static 'client/js/main.js' %}?v=3"></script>
+<script src="{% static 'client/js/main.js' %}?v=4"></script>
 <script src="{% static 'client/js/bon_plan.js' %}?v=2"></script>
 </body>
 </html>

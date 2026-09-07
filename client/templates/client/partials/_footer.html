@@ -1,0 +1,43 @@
+{% load static %}
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo-box">
+        <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="footer-logo-img">
+      </div>
+      <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produits</h4>
+      <a href="{% url 'client:home' %}#produits">Béton C20/25</a>
+      <a href="{% url 'client:home' %}#produits">Béton C25/30</a>
+      <a href="{% url 'client:home' %}#produits">Béton C30/37</a>
+      <a href="{% url 'client:home' %}#produits">Béton C35/45</a>
+      <a href="{% url 'client:home' %}#produits">Mortier prêt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Entreprise</h4>
+      <a href="{% url 'client:about' %}">À propos</a>
+      <a href="{% url 'client:careers_jobs' %}">Offre d'emploi</a>
+      <a href="{% url 'client:careers_spontaneous' %}">Candidature spontanée</a>
+      <a href="{% url 'client:bon_plan' %}">Bons Plans &amp; ZenCard</a>
+      <a href="{% url 'client:contact' %}">Nous contacter</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>+228 90 30 55 88</p>
+      <p>contact@jcemgroupe.tg</p>
+      <p>Lomé, Togo</p>
+      <p>Lun–Sam : 7h – 18h</p>
+      <div class="footer-payment-badges">
+        <span class="footer-pay-badge">Mixx by Yas</span>
+        <span class="footer-pay-badge">Flooz</span>
+        <span class="footer-pay-badge">Carte bancaire</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p>
+    <p>Béton prêt à l'emploi · Lomé · Togo</p>
+  </div>
+</footer>

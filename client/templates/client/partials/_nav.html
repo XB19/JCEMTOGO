@@ -1,0 +1,29 @@
+{% load static %}
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo nav-logo-link" href="{% url 'client:home' %}">
+      <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'client:home' %}" data-nav="home"{% if active == 'home' %} class="active"{% endif %}>Accueil</a>
+      <a href="{% url 'client:about' %}"{% if active == 'about' %} class="active"{% endif %}>À propos</a>
+      <a href="{% url 'client:home' %}#produits" data-nav="produits">Produits</a>
+      <a href="{% url 'client:home' %}#detail" data-nav="detail">Fiche produit</a>
+      <a href="{% url 'client:home' %}#panier" data-nav="panier">Panier</a>
+      <a href="{% url 'client:home' %}#checkout" data-nav="checkout">Commander</a>
+      <div class="nav-dropdown">
+        <a href="{% url 'client:careers_jobs' %}" class="nav-dropdown-toggle{% if active == 'careers' %} active{% endif %}">Carrière <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="{% url 'client:careers_jobs' %}">Offre d'emploi</a>
+          <a href="{% url 'client:careers_spontaneous' %}">Candidature spontanée</a>
+        </div>
+      </div>
+      <a href="{% url 'client:bon_plan' %}"{% if active == 'bon_plan' %} class="active"{% endif %}>Bons Plans</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-outline-red{% if active == 'contact' %} active{% endif %}" href="{% url 'client:contact' %}">Nous contacter</a>
+      <a class="btn btn-secondary" href="{% url 'client:home' %}#panier">🛒 Panier (<span class="cart-count">0</span>)</a>
+      <a class="btn btn-primary" href="{% url 'client:home' %}#checkout">Commander</a>
+    </div>
+  </div>
+</nav>

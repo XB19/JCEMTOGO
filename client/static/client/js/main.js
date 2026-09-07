@@ -248,7 +248,23 @@ function showPage(id, el) {
     window.scrollTo(0, 0);
   }
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  if (el) el.classList.add('active');
+  const activeLink = el || document.querySelector('.nav-links a[data-nav="' + id + '"]');
+  if (activeLink) activeLink.classList.add('active');
+}
+
+// Permet d'ouvrir une vue de la SPA depuis une autre page via une ancre
+// (ex: bons-plans -> accueil#produits). Reste sans effet sur les pages
+// qui n'ont pas de conteneurs .page correspondants.
+function routeFromHash() {
+  const id = (window.location.hash || '').replace('#', '').trim();
+  const valid = ['home', 'produits', 'detail', 'panier', 'checkout'];
+  if (!valid.includes(id)) return;
+  const link = document.querySelector('.nav-links a[data-nav="' + id + '"]');
+  if (id === 'checkout') {
+    goToCheckout(link || null);
+  } else {
+    showPage(id, link || null);
+  }
 }
 
 function calcVol() {
@@ -427,4 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
       s.classList.add('selected');
     });
   });
+  routeFromHash();
 });
+
+window.addEventListener('hashchange', routeFromHash);

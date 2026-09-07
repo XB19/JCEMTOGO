@@ -7,29 +7,10 @@
   <title>JCEM GROUPE TOGO — Béton Prêt à l'Emploi</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <meta name="csrf-token" content="{{ csrf_token }}" />
-  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=3" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=4" />
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-logo nav-logo-link" onclick="showPage('home', null)" role="button" tabindex="0">
-      <img class="nav-logo-img" src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" />
-    </div>
-    <div class="nav-links">
-      <a class="active" data-page="home" onclick="showPage('home', this)">Accueil</a>
-      <a onclick="showPage('produits', this)">Produits</a>
-      <a onclick="showPage('detail', this)">Fiche produit</a>
-      <a onclick="showPage('panier', this)">Panier</a>
-      <a onclick="goToCheckout(this)">Commander</a>
-      <a href="{% url 'client:bon_plan' %}">Bons Plans</a>
-    </div>
-    <div class="nav-actions">
-      <span>+228 90 30 55 88</span>
-      <button class="btn btn-secondary" onclick="showPage('panier', null)">🛒 Panier (<span class="cart-count">0</span>)</button>
-      <button class="btn btn-primary" onclick="goToCheckout()">Commander</button>
-    </div>
-  </div>
-</nav>
+{% include 'client/partials/_nav.html' with active='home' %}
 
 <div id="page-home" class="page active">
   <section class="hero-section">
@@ -455,20 +436,7 @@
   </div>
 </div>
 
-<footer class="footer">
-    <div class="footer-main">
-      <div>
-        <div class="footer-logo-box">
-          <img src="{% static 'client/images/logo.png' %}" alt="Logo JCEM GROUPE TOGO" class="footer-logo-img">
-        </div>
-        <p class="footer-brand">Fournisseur de béton prêt à l'emploi à Lomé. Production certifiée, livraison traçable, facturation digitale.</p>
-      </div>
-      <div class="footer-col"><h4>Produits</h4><a href="#" onclick="showPage('home', null)">Béton C20/25</a><a href="#" onclick="showPage('home', null)">Béton C25/30</a><a href="#" onclick="showPage('home', null)">Béton C30/37</a><a href="#" onclick="showPage('home', null)">Béton C35/45</a><a href="#" onclick="showPage('home', null)">Mortier prêt</a></div>
-      <div class="footer-col"><h4>Services</h4><a href="#" onclick="showPage('home', null)">Livraison chantier</a><a href="#" onclick="showPage('home', null)">Calcul de volume</a><a href="#" onclick="showPage('home', null)">Fiches techniques</a><a href="#" onclick="showPage('home', null)">Suivi commande</a></div>
-      <div class="footer-col"><h4>Contact</h4><p>+228 90 00 00 00</p><p>contact@jcemgroupe.tg</p><p>Lomé, Togo</p><p>Lun–Sam : 7h – 18h</p><div class="footer-payment-badges"><span class="footer-pay-badge">Mixx by Yas</span><span class="footer-pay-badge">Flooz</span><span class="footer-pay-badge">Carte bancaire</span></div></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 JCEM GROUPE TOGO — Tous droits réservés</p><p>Béton prêt à l'emploi · Lomé · Togo</p></div>
-  </footer>
-  <script src="{% static 'client/js/main.js' %}?v=3"></script>
+{% include 'client/partials/_footer.html' %}
+  <script src="{% static 'client/js/main.js' %}?v=4"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offres d'emploi — Carrière — JCEM GROUPE TOGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=4" />
+  <link rel="stylesheet" href="{% static 'client/css/pages.css' %}?v=1" />
+</head>
+<body>
+
+{% include 'client/partials/_nav.html' with active='careers' %}
+
+<!-- HERO -->
+
+<section class="pg-hero">
+  <div class="sec-in">
+    <div class="pg-hero-tag">Carrière</div>
+    <h1 class="pg-hero-title">Rejoignez <em>JCEM GROUPE TOGO</em></h1>
+    <p class="pg-hero-text">Nous construisons une filière béton plus fiable et plus transparente au Togo. Découvrez nos postes ouverts — ou envoyez-nous une candidature spontanée.</p>
+  </div>
+</section>
+
+<!-- OFFRES -->
+
+<section class="pg-section">
+  <div class="sec-in">
+    <div class="section-center-text">
+      <div class="sec-eye">Postes ouverts</div>
+      <h2 class="sec-title">Nos offres d'emploi</h2>
+    </div>
+
+    {% if offers %}
+      <div class="job-list">
+        {% for offer in offers %}
+          <article class="job-card">
+            <div class="job-card-main">
+              <h3 class="job-card-title">{{ offer.title }}</h3>
+              <div class="job-meta">
+                <span class="job-tag contract">{{ offer.get_contract_type_display }}</span>
+                {% if offer.department %}<span class="job-tag">{{ offer.department }}</span>{% endif %}
+                <span class="job-tag">{{ offer.location }}</span>
+              </div>
+              <div class="job-desc">{{ offer.description }}</div>
+              {% if offer.profile %}
+                <div class="job-desc" style="margin-top:12px;">
+                  <span class="job-desc-label">Profil recherché</span>{{ offer.profile }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="job-card-action">
+              <a class="btn btn-primary" href="{% url 'client:careers_spontaneous' %}?offer={{ offer.pk }}">Postuler →</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="pg-empty">
+        <div class="pg-empty-icon">📭</div>
+        <div class="pg-empty-title">Aucune offre ouverte pour le moment</div>
+        <p class="pg-empty-text">Nous n'avons pas de poste à pourvoir actuellement. Vous pouvez néanmoins nous transmettre une candidature spontanée : nous la conservons pour nos prochains recrutements.</p>
+        <a class="btn btn-primary" href="{% url 'client:careers_spontaneous' %}">Candidature spontanée →</a>
+      </div>
+    {% endif %}
+
+    <div class="pg-empty" style="border-style:solid;margin-top:16px;">
+      <div class="pg-empty-title">Vous ne trouvez pas le poste qui vous correspond ?</div>
+      <p class="pg-empty-text">Envoyez-nous votre profil : chantier, centrale à béton, logistique, commercial, administratif — nous étudions toutes les candidatures.</p>
+      <a class="btn btn-outline-red" href="{% url 'client:careers_spontaneous' %}">Envoyer une candidature spontanée</a>
+    </div>
+  </div>
+</section>
+
+{% include 'client/partials/_footer.html' %}
+
+<script src="{% static 'client/js/main.js' %}?v=4"></script>
+</body>
+</html>

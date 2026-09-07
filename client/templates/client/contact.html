@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — JCEM GROUPE TOGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=4" />
+  <link rel="stylesheet" href="{% static 'client/css/contact.css' %}?v=1" />
+</head>
+<body>
+
+{% include 'client/partials/_nav.html' with active='contact' %}
+
+<!-- HERO -->
+
+<section class="ct-hero">
+  <div class="sec-in">
+    <div class="ct-hero-tag">JCEM GROUPE TOGO</div>
+    <h1 class="ct-hero-title">Parlons de votre <em>chantier</em></h1>
+    <p class="ct-hero-text">Une question sur nos bétons, un devis, une livraison à programmer ? Écrivez-nous, notre équipe vous répond sous 24 h ouvrées.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="ct-section">
+  <div class="sec-in">
+    <div class="ct-grid">
+
+      <!-- Colonne gauche : image + coordonnées -->
+      <div class="ct-media">
+        <div class="ct-photo">
+          <img src="{% static 'client/images/hero-concrete-mixer.jpg' %}" alt="Camion malaxeur JCEM GROUPE TOGO en livraison sur un chantier à Lomé">
+          <div class="ct-photo-caption">
+            <strong>JCEM GROUPE TOGO</strong>
+            Béton prêt à l'emploi, production certifiée et livraison traçable partout à Lomé.
+          </div>
+        </div>
+        <div class="ct-info-cards">
+          <div class="ct-info-card">
+            <div class="ct-info-icon">📍</div>
+            <div class="ct-info-label">Adresse</div>
+            <div class="ct-info-value">Lomé, Togo</div>
+          </div>
+          <div class="ct-info-card">
+            <div class="ct-info-icon">📞</div>
+            <div class="ct-info-label">Téléphone</div>
+            <div class="ct-info-value">+228 90 30 55 88</div>
+          </div>
+          <div class="ct-info-card">
+            <div class="ct-info-icon">✉️</div>
+            <div class="ct-info-label">Email</div>
+            <div class="ct-info-value">contact@jcemgroupe.tg</div>
+          </div>
+          <div class="ct-info-card">
+            <div class="ct-info-icon">🕒</div>
+            <div class="ct-info-label">Horaires</div>
+            <div class="ct-info-value">Lun – Sam : 7h – 18h</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : formulaire -->
+      <div class="ct-form-card">
+        <div class="ct-form-title">Envoyez-nous un message</div>
+        <div class="ct-form-sub">Les champs marqués d'un <span class="ct-required">*</span> sont obligatoires.</div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="ct-alert {% if message.tags == 'success' %}ct-alert-success{% else %}ct-alert-error{% endif %}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form class="ct-form" method="post" action="{% url 'client:contact' %}">
+          {% csrf_token %}
+          <div class="ct-form-row">
+            <div class="fld">
+              <label for="ct-name">Nom complet <span class="ct-required">*</span></label>
+              <input type="text" id="ct-name" name="name" value="{{ form_data.name|default:'' }}" placeholder="Ex : Adjoa Koffi" required>
+            </div>
+            <div class="fld">
+              <label for="ct-phone">Téléphone</label>
+              <input type="tel" id="ct-phone" name="phone" value="{{ form_data.phone|default:'' }}" placeholder="+228 ..">
+            </div>
+          </div>
+          <div class="fld">
+            <label for="ct-email">Email <span class="ct-required">*</span></label>
+            <input type="email" id="ct-email" name="email" value="{{ form_data.email|default:'' }}" placeholder="vous@exemple.com" required>
+          </div>
+          <div class="fld">
+            <label for="ct-subject">Sujet</label>
+            <input type="text" id="ct-subject" name="subject" value="{{ form_data.subject|default:'' }}" placeholder="Devis, livraison, information..">
+          </div>
+          <div class="fld">
+            <label for="ct-message">Message <span class="ct-required">*</span></label>
+            <textarea id="ct-message" name="message" placeholder="Décrivez votre besoin : type de béton, volume, adresse du chantier, date souhaitée..." required>{{ form_data.message|default:'' }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary ct-submit">Envoyer le message →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+{% include 'client/partials/_footer.html' %}
+
+<script src="{% static 'client/js/main.js' %}?v=4"></script>
+</body>
+</html>

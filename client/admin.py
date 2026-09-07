@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Order, Product
+from .models import ContactMessage, JobApplication, JobOffer, Order, Product
 
 
 @admin.register(Product)
@@ -33,3 +33,36 @@ class OrderAdmin(admin.ModelAdmin):
             'fields': ('created_at', 'updated_at')
         }),
     )
+
+
+@admin.register(JobOffer)
+class JobOfferAdmin(admin.ModelAdmin):
+    list_display = ('title', 'department', 'location', 'contract_type', 'is_active', 'created_at')
+    list_filter = ('is_active', 'contract_type', 'department')
+    search_fields = ('title', 'department', 'description', 'profile')
+    list_editable = ('is_active',)
+    readonly_fields = ('created_at', 'updated_at')
+    ordering = ('-created_at',)
+
+
+@admin.register(JobApplication)
+class JobApplicationAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'position', 'offer', 'is_spontaneous', 'is_processed', 'created_at')
+    list_filter = ('is_spontaneous', 'is_processed', 'created_at')
+    search_fields = ('first_name', 'last_name', 'email', 'phone', 'position', 'message')
+    list_editable = ('is_processed',)
+    readonly_fields = (
+        'offer', 'is_spontaneous', 'first_name', 'last_name', 'email',
+        'phone', 'position', 'cv_link', 'message', 'created_at',
+    )
+    ordering = ('-created_at',)
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'subject', 'is_read', 'created_at')
+    list_filter = ('is_read', 'created_at')
+    search_fields = ('name', 'email', 'phone', 'subject', 'message')
+    readonly_fields = ('name', 'email', 'phone', 'subject', 'message', 'created_at')
+    list_editable = ('is_read',)
+    ordering = ('-created_at',)

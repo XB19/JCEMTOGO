@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — JCEM GROUPE TOGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}?v=4" />
+  <link rel="stylesheet" href="{% static 'client/css/pages.css' %}?v=1" />
+</head>
+<body>
+
+{% include 'client/partials/_nav.html' with active='about' %}
+
+<!-- HERO -->
+
+<section class="pg-hero">
+  <div class="sec-in">
+    <div class="pg-hero-tag">JCEM GROUPE TOGO</div>
+    <h1 class="pg-hero-title">Le béton, <em>livré autrement</em></h1>
+    <p class="pg-hero-text">JCEM GROUPE TOGO produit et livre du béton prêt à l'emploi à Lomé, avec une exigence : la traçabilité de bout en bout, de la centrale au chantier.</p>
+  </div>
+</section>
+
+<!-- NOTRE HISTOIRE -->
+
+<section class="pg-section">
+  <div class="sec-in">
+    <div class="pg-split">
+      <div class="pg-split-content">
+        <div class="sec-eye">Qui sommes-nous</div>
+        <h2 class="pg-split-title">Un fournisseur de béton pensé pour le chantier moderne</h2>
+        <div class="pg-split-body">
+          <p>Né du constat que la commande de béton restait opaque et imprévisible, JCEM GROUPE TOGO digitalise chaque étape : commande en ligne, suivi de production en temps réel, créneau de livraison choisi et preuve de livraison photo.</p>
+          <p>Nos formulations couvrent l'ensemble des besoins du gros œuvre — des chapes aux structures porteuses — et respectent la norme NF EN 206. Chaque toupie qui quitte la centrale est identifiée, pesée et suivie jusqu'à la coulée.</p>
+        </div>
+      </div>
+      <div class="pg-split-media">
+        <img src="{% static 'client/images/hero-concrete-mixer.jpg' %}" alt="Camion malaxeur JCEM GROUPE TOGO sur un chantier à Lomé">
+      </div>
+    </div>
+
+    <div class="pg-stats">
+      <div class="pg-stat"><div class="pg-stat-val">500+</div><div class="pg-stat-label">Chantiers livrés</div></div>
+      <div class="pg-stat"><div class="pg-stat-val">24h</div><div class="pg-stat-label">Délai de production</div></div>
+      <div class="pg-stat"><div class="pg-stat-val">100%</div><div class="pg-stat-label">Livraisons tracées (POD)</div></div>
+      <div class="pg-stat"><div class="pg-stat-val">4</div><div class="pg-stat-label">Moyens de paiement</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / VALEURS -->
+
+<section class="pg-section">
+  <div class="sec-in">
+    <div class="section-center-text">
+      <div class="sec-eye">Nos valeurs</div>
+      <h2 class="sec-title">Ce qui guide notre travail</h2>
+    </div>
+    <div class="pg-cards">
+      <div class="pg-card">
+        <div class="pg-card-icon">🎯</div>
+        <div class="pg-card-title">Fiabilité</div>
+        <div class="pg-card-text">Un béton conforme, au bon dosage, livré dans le créneau annoncé. La régularité avant tout.</div>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-icon">🔍</div>
+        <div class="pg-card-title">Transparence</div>
+        <div class="pg-card-text">Prix clairs, suivi en temps réel et preuve de livraison horodatée pour chaque commande.</div>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-icon">🤝</div>
+        <div class="pg-card-title">Proximité</div>
+        <div class="pg-card-text">Une équipe locale qui connaît les chantiers de Lomé et reste joignable du lundi au samedi.</div>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-icon">🧪</div>
+        <div class="pg-card-title">Qualité certifiée</div>
+        <div class="pg-card-text">Formulations testées en centrale, conformes NF EN 206, adaptées à chaque type d'ouvrage.</div>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-icon">⏱️</div>
+        <div class="pg-card-title">Réactivité</div>
+        <div class="pg-card-text">Production sous 24 h et logistique dédiée pour tenir le rythme de votre chantier.</div>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-icon">💳</div>
+        <div class="pg-card-title">Facturation digitale</div>
+        <div class="pg-card-text">Mixx by Yas, Flooz, carte bancaire ou espèces — et une facture envoyée automatiquement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="pg-section">
+  <div class="sec-in">
+    <div class="pg-split reverse">
+      <div class="pg-split-media">
+        <img src="{% static 'client/images/concrete-c30-37.jpg' %}" alt="Structure porteuse en béton C30/37">
+      </div>
+      <div class="pg-split-content">
+        <div class="sec-eye">Travailler avec nous</div>
+        <h2 class="pg-split-title">Un projet, une question, une candidature ?</h2>
+        <div class="pg-split-body">
+          <p>Que vous soyez maître d'ouvrage, entreprise de BTP ou candidat, notre équipe est à votre écoute.</p>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="{% url 'client:contact' %}">Nous contacter</a>
+          <a class="btn btn-outline-red" href="{% url 'client:careers_jobs' %}">Voir nos offres d'emploi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'client/partials/_footer.html' %}
+
+<script src="{% static 'client/js/main.js' %}?v=4"></script>
+</body>
+</html>
